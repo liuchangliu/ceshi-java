@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.UserandgroupMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Userandgroup" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="groupId" property="groupid" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="addUserId" property="adduserid" jdbcType="BIGINT" />
+    <result column="addUsername" property="addusername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, groupId, addtime, addUserId, addUsername
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from userandgroup
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from userandgroup
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.Userandgroup" >
+    insert into userandgroup (id, userId, groupId, 
+      addtime, addUserId, addUsername
+      )
+    values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{groupid,jdbcType=INTEGER}, 
+      #{addtime,jdbcType=TIMESTAMP}, #{adduserid,jdbcType=BIGINT}, #{addusername,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.Userandgroup" >
+    insert into userandgroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="groupid != null" >
+        groupId,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="adduserid != null" >
+        addUserId,
+      </if>
+      <if test="addusername != null" >
+        addUsername,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        #{addusername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Userandgroup" >
+    update userandgroup
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null" >
+        groupId = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        addUserId = #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        addUsername = #{addusername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Userandgroup" >
+    update userandgroup
+    set userId = #{userid,jdbcType=BIGINT},
+      groupId = #{groupid,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      addUserId = #{adduserid,jdbcType=BIGINT},
+      addUsername = #{addusername,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

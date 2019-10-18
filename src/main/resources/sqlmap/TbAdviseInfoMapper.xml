@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbAdviseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbAdviseInfo" >
+    <id column="tai_id" property="taiId" jdbcType="BIGINT" />
+    <result column="tai_phone" property="taiPhone" jdbcType="VARCHAR" />
+    <result column="tai_desc" property="taiDesc" jdbcType="VARCHAR" />
+    <result column="tai_add_date" property="taiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tai_status" property="taiStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tai_id, tai_phone, tai_desc, tai_add_date, tai_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_advise_info
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_advise_info
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbAdviseInfo" >
+    insert into tb_advise_info (tai_id, tai_phone, tai_desc, 
+      tai_add_date, tai_status)
+    values (#{taiId,jdbcType=BIGINT}, #{taiPhone,jdbcType=VARCHAR}, #{taiDesc,jdbcType=VARCHAR}, 
+      #{taiAddDate,jdbcType=TIMESTAMP}, #{taiStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbAdviseInfo" >
+    insert into tb_advise_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taiId != null" >
+        tai_id,
+      </if>
+      <if test="taiPhone != null" >
+        tai_phone,
+      </if>
+      <if test="taiDesc != null" >
+        tai_desc,
+      </if>
+      <if test="taiAddDate != null" >
+        tai_add_date,
+      </if>
+      <if test="taiStatus != null" >
+        tai_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taiId != null" >
+        #{taiId,jdbcType=BIGINT},
+      </if>
+      <if test="taiPhone != null" >
+        #{taiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="taiDesc != null" >
+        #{taiDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taiAddDate != null" >
+        #{taiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taiStatus != null" >
+        #{taiStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbAdviseInfo" >
+    update tb_advise_info
+    <set >
+      <if test="taiPhone != null" >
+        tai_phone = #{taiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="taiDesc != null" >
+        tai_desc = #{taiDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taiAddDate != null" >
+        tai_add_date = #{taiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taiStatus != null" >
+        tai_status = #{taiStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbAdviseInfo" >
+    update tb_advise_info
+    set tai_phone = #{taiPhone,jdbcType=VARCHAR},
+      tai_desc = #{taiDesc,jdbcType=VARCHAR},
+      tai_add_date = #{taiAddDate,jdbcType=TIMESTAMP},
+      tai_status = #{taiStatus,jdbcType=INTEGER}
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </update>
+</mapper>

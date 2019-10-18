@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbShipperInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbShipperInfo" >
+    <id column="tsi_id" property="tsiId" jdbcType="BIGINT" />
+    <result column="tsi_name" property="tsiName" jdbcType="VARCHAR" />
+    <result column="tsi_simple_name" property="tsiSimpleName" jdbcType="VARCHAR" />
+    <result column="tsi_loginUser" property="tsiLoginuser" jdbcType="VARCHAR" />
+    <result column="tsi_password" property="tsiPassword" jdbcType="VARCHAR" />
+    <result column="tsi_prov_id" property="tsiProvId" jdbcType="BIGINT" />
+    <result column="tsi_city_id" property="tsiCityId" jdbcType="BIGINT" />
+    <result column="tsi_region_id" property="tsiRegionId" jdbcType="BIGINT" />
+    <result column="tsi_addresss" property="tsiAddresss" jdbcType="VARCHAR" />
+    <result column="tsi_longitude" property="tsiLongitude" jdbcType="VARCHAR" />
+    <result column="tsi_latitude" property="tsiLatitude" jdbcType="VARCHAR" />
+    <result column="tsi_charge_person" property="tsiChargePerson" jdbcType="VARCHAR" />
+    <result column="tsi_charge_phone" property="tsiChargePhone" jdbcType="VARCHAR" />
+    <result column="tsi_law_person" property="tsiLawPerson" jdbcType="VARCHAR" />
+    <result column="tsi_law_person_card_number" property="tsiLawPersonCardNumber" jdbcType="VARCHAR" />
+    <result column="tsi_law_phone" property="tsiLawPhone" jdbcType="VARCHAR" />
+    <result column="tsi_company_phone" property="tsiCompanyPhone" jdbcType="VARCHAR" />
+    <result column="tsi_pay_taxes_number" property="tsiPayTaxesNumber" jdbcType="VARCHAR" />
+    <result column="tsi_bank_id" property="tsiBankId" jdbcType="BIGINT" />
+    <result column="tsi_bank_account" property="tsiBankAccount" jdbcType="VARCHAR" />
+    <result column="tsi_bank_prov_id" property="tsiBankProvId" jdbcType="BIGINT" />
+    <result column="tsi_bank_city_id" property="tsiBankCityId" jdbcType="BIGINT" />
+    <result column="tsi_bank_region_id" property="tsiBankRegionId" jdbcType="BIGINT" />
+    <result column="tsi_bank_branch_name" property="tsiBankBranchName" jdbcType="VARCHAR" />
+    <result column="tsi_yyzh" property="tsiYyzh" jdbcType="VARCHAR" />
+    <result column="tsi_desp" property="tsiDesp" jdbcType="VARCHAR" />
+    <result column="tsi_add_date" property="tsiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tsi_add_type" property="tsiAddType" jdbcType="INTEGER" />
+    <result column="tsi_add_person" property="tsiAddPerson" jdbcType="BIGINT" />
+    <result column="tsi_status" property="tsiStatus" jdbcType="INTEGER" />
+    <result column="tsi_check_person" property="tsiCheckPerson" jdbcType="BIGINT" />
+    <result column="tsi_check_time" property="tsiCheckTime" jdbcType="TIMESTAMP" />
+    <result column="tsi_check_desp" property="tsiCheckDesp" jdbcType="VARCHAR" />
+    <result column="tsi_parent_id" property="tsiParentId" jdbcType="BIGINT" />
+    <result column="tsi_amount" property="tsiAmount" jdbcType="DOUBLE" />
+    <result column="tsi_frozen_amount" property="tsiFrozenAmount" jdbcType="DOUBLE" />
+    <result column="tsi_icon" property="tsiIcon" jdbcType="VARCHAR" />
+    <result column="tsi_agent_id" property="tsiAgentId" jdbcType="INTEGER" />
+    <result column="tsi_identity_status" property="tsiIdentityStatus" jdbcType="INTEGER" />
+    <result column="tsi_bank_cardholder_name" property="tsiBankCardholderName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsi_id, tsi_name, tsi_simple_name, tsi_loginUser, tsi_password, tsi_prov_id, tsi_city_id, 
+    tsi_region_id, tsi_addresss, tsi_longitude, tsi_latitude, tsi_charge_person, tsi_charge_phone, 
+    tsi_law_person, tsi_law_person_card_number, tsi_law_phone, tsi_company_phone, tsi_pay_taxes_number, 
+    tsi_bank_id, tsi_bank_account, tsi_bank_prov_id, tsi_bank_city_id, tsi_bank_region_id, 
+    tsi_bank_branch_name, tsi_yyzh, tsi_desp, tsi_add_date, tsi_add_type, tsi_add_person, 
+    tsi_status, tsi_check_person, tsi_check_time, tsi_check_desp, tsi_parent_id, tsi_amount, 
+    tsi_frozen_amount, tsi_icon, tsi_agent_id, tsi_identity_status, tsi_bank_cardholder_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shipper_info
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shipper_info
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbShipperInfo" >
+    insert into tb_shipper_info (tsi_id, tsi_name, tsi_simple_name, 
+      tsi_loginUser, tsi_password, tsi_prov_id, 
+      tsi_city_id, tsi_region_id, tsi_addresss, 
+      tsi_longitude, tsi_latitude, tsi_charge_person, 
+      tsi_charge_phone, tsi_law_person, tsi_law_person_card_number, 
+      tsi_law_phone, tsi_company_phone, tsi_pay_taxes_number, 
+      tsi_bank_id, tsi_bank_account, tsi_bank_prov_id, 
+      tsi_bank_city_id, tsi_bank_region_id, tsi_bank_branch_name, 
+      tsi_yyzh, tsi_desp, tsi_add_date, 
+      tsi_add_type, tsi_add_person, tsi_status, 
+      tsi_check_person, tsi_check_time, tsi_check_desp, 
+      tsi_parent_id, tsi_amount, tsi_frozen_amount, 
+      tsi_icon, tsi_agent_id, tsi_identity_status, 
+      tsi_bank_cardholder_name)
+    values (#{tsiId,jdbcType=BIGINT}, #{tsiName,jdbcType=VARCHAR}, #{tsiSimpleName,jdbcType=VARCHAR}, 
+      #{tsiLoginuser,jdbcType=VARCHAR}, #{tsiPassword,jdbcType=VARCHAR}, #{tsiProvId,jdbcType=BIGINT}, 
+      #{tsiCityId,jdbcType=BIGINT}, #{tsiRegionId,jdbcType=BIGINT}, #{tsiAddresss,jdbcType=VARCHAR}, 
+      #{tsiLongitude,jdbcType=VARCHAR}, #{tsiLatitude,jdbcType=VARCHAR}, #{tsiChargePerson,jdbcType=VARCHAR}, 
+      #{tsiChargePhone,jdbcType=VARCHAR}, #{tsiLawPerson,jdbcType=VARCHAR}, #{tsiLawPersonCardNumber,jdbcType=VARCHAR}, 
+      #{tsiLawPhone,jdbcType=VARCHAR}, #{tsiCompanyPhone,jdbcType=VARCHAR}, #{tsiPayTaxesNumber,jdbcType=VARCHAR}, 
+      #{tsiBankId,jdbcType=BIGINT}, #{tsiBankAccount,jdbcType=VARCHAR}, #{tsiBankProvId,jdbcType=BIGINT}, 
+      #{tsiBankCityId,jdbcType=BIGINT}, #{tsiBankRegionId,jdbcType=BIGINT}, #{tsiBankBranchName,jdbcType=VARCHAR}, 
+      #{tsiYyzh,jdbcType=VARCHAR}, #{tsiDesp,jdbcType=VARCHAR}, #{tsiAddDate,jdbcType=TIMESTAMP}, 
+      #{tsiAddType,jdbcType=INTEGER}, #{tsiAddPerson,jdbcType=BIGINT}, #{tsiStatus,jdbcType=INTEGER}, 
+      #{tsiCheckPerson,jdbcType=BIGINT}, #{tsiCheckTime,jdbcType=TIMESTAMP}, #{tsiCheckDesp,jdbcType=VARCHAR}, 
+      #{tsiParentId,jdbcType=BIGINT}, #{tsiAmount,jdbcType=DOUBLE}, #{tsiFrozenAmount,jdbcType=DOUBLE}, 
+      #{tsiIcon,jdbcType=VARCHAR}, #{tsiAgentId,jdbcType=INTEGER}, #{tsiIdentityStatus,jdbcType=INTEGER}, 
+      #{tsiBankCardholderName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbShipperInfo" >
+    insert into tb_shipper_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsiId != null" >
+        tsi_id,
+      </if>
+      <if test="tsiName != null" >
+        tsi_name,
+      </if>
+      <if test="tsiSimpleName != null" >
+        tsi_simple_name,
+      </if>
+      <if test="tsiLoginuser != null" >
+        tsi_loginUser,
+      </if>
+      <if test="tsiPassword != null" >
+        tsi_password,
+      </if>
+      <if test="tsiProvId != null" >
+        tsi_prov_id,
+      </if>
+      <if test="tsiCityId != null" >
+        tsi_city_id,
+      </if>
+      <if test="tsiRegionId != null" >
+        tsi_region_id,
+      </if>
+      <if test="tsiAddresss != null" >
+        tsi_addresss,
+      </if>
+      <if test="tsiLongitude != null" >
+        tsi_longitude,
+      </if>
+      <if test="tsiLatitude != null" >
+        tsi_latitude,
+      </if>
+      <if test="tsiChargePerson != null" >
+        tsi_charge_person,
+      </if>
+      <if test="tsiChargePhone != null" >
+        tsi_charge_phone,
+      </if>
+      <if test="tsiLawPerson != null" >
+        tsi_law_person,
+      </if>
+      <if test="tsiLawPersonCardNumber != null" >
+        tsi_law_person_card_number,
+      </if>
+      <if test="tsiLawPhone != null" >
+        tsi_law_phone,
+      </if>
+      <if test="tsiCompanyPhone != null" >
+        tsi_company_phone,
+      </if>
+      <if test="tsiPayTaxesNumber != null" >
+        tsi_pay_taxes_number,
+      </if>
+      <if test="tsiBankId != null" >
+        tsi_bank_id,
+      </if>
+      <if test="tsiBankAccount != null" >
+        tsi_bank_account,
+      </if>
+      <if test="tsiBankProvId != null" >
+        tsi_bank_prov_id,
+      </if>
+      <if test="tsiBankCityId != null" >
+        tsi_bank_city_id,
+      </if>
+      <if test="tsiBankRegionId != null" >
+        tsi_bank_region_id,
+      </if>
+      <if test="tsiBankBranchName != null" >
+        tsi_bank_branch_name,
+      </if>
+      <if test="tsiYyzh != null" >
+        tsi_yyzh,
+      </if>
+      <if test="tsiDesp != null" >
+        tsi_desp,
+      </if>
+      <if test="tsiAddDate != null" >
+        tsi_add_date,
+      </if>
+      <if test="tsiAddType != null" >
+        tsi_add_type,
+      </if>
+      <if test="tsiAddPerson != null" >
+        tsi_add_person,
+      </if>
+      <if test="tsiStatus != null" >
+        tsi_status,
+      </if>
+      <if test="tsiCheckPerson != null" >
+        tsi_check_person,
+      </if>
+      <if test="tsiCheckTime != null" >
+        tsi_check_time,
+      </if>
+      <if test="tsiCheckDesp != null" >
+        tsi_check_desp,
+      </if>
+      <if test="tsiParentId != null" >
+        tsi_parent_id,
+      </if>
+      <if test="tsiAmount != null" >
+        tsi_amount,
+      </if>
+      <if test="tsiFrozenAmount != null" >
+        tsi_frozen_amount,
+      </if>
+      <if test="tsiIcon != null" >
+        tsi_icon,
+      </if>
+      <if test="tsiAgentId != null" >
+        tsi_agent_id,
+      </if>
+      <if test="tsiIdentityStatus != null" >
+        tsi_identity_status,
+      </if>
+      <if test="tsiBankCardholderName != null" >
+        tsi_bank_cardholder_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsiId != null" >
+        #{tsiId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiName != null" >
+        #{tsiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiSimpleName != null" >
+        #{tsiSimpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLoginuser != null" >
+        #{tsiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPassword != null" >
+        #{tsiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiProvId != null" >
+        #{tsiProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiCityId != null" >
+        #{tsiCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiRegionId != null" >
+        #{tsiRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiAddresss != null" >
+        #{tsiAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLongitude != null" >
+        #{tsiLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLatitude != null" >
+        #{tsiLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiChargePerson != null" >
+        #{tsiChargePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiChargePhone != null" >
+        #{tsiChargePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLawPerson != null" >
+        #{tsiLawPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLawPersonCardNumber != null" >
+        #{tsiLawPersonCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLawPhone != null" >
+        #{tsiLawPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiCompanyPhone != null" >
+        #{tsiCompanyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPayTaxesNumber != null" >
+        #{tsiPayTaxesNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiBankId != null" >
+        #{tsiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankAccount != null" >
+        #{tsiBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiBankProvId != null" >
+        #{tsiBankProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankCityId != null" >
+        #{tsiBankCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankRegionId != null" >
+        #{tsiBankRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankBranchName != null" >
+        #{tsiBankBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiYyzh != null" >
+        #{tsiYyzh,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiDesp != null" >
+        #{tsiDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiAddDate != null" >
+        #{tsiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsiAddType != null" >
+        #{tsiAddType,jdbcType=INTEGER},
+      </if>
+      <if test="tsiAddPerson != null" >
+        #{tsiAddPerson,jdbcType=BIGINT},
+      </if>
+      <if test="tsiStatus != null" >
+        #{tsiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsiCheckPerson != null" >
+        #{tsiCheckPerson,jdbcType=BIGINT},
+      </if>
+      <if test="tsiCheckTime != null" >
+        #{tsiCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsiCheckDesp != null" >
+        #{tsiCheckDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiParentId != null" >
+        #{tsiParentId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiAmount != null" >
+        #{tsiAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsiFrozenAmount != null" >
+        #{tsiFrozenAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsiIcon != null" >
+        #{tsiIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiAgentId != null" >
+        #{tsiAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="tsiIdentityStatus != null" >
+        #{tsiIdentityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsiBankCardholderName != null" >
+        #{tsiBankCardholderName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbShipperInfo" >
+    update tb_shipper_info
+    <set >
+      <if test="tsiName != null" >
+        tsi_name = #{tsiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiSimpleName != null" >
+        tsi_simple_name = #{tsiSimpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLoginuser != null" >
+        tsi_loginUser = #{tsiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPassword != null" >
+        tsi_password = #{tsiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiProvId != null" >
+        tsi_prov_id = #{tsiProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiCityId != null" >
+        tsi_city_id = #{tsiCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiRegionId != null" >
+        tsi_region_id = #{tsiRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiAddresss != null" >
+        tsi_addresss = #{tsiAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLongitude != null" >
+        tsi_longitude = #{tsiLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLatitude != null" >
+        tsi_latitude = #{tsiLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiChargePerson != null" >
+        tsi_charge_person = #{tsiChargePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiChargePhone != null" >
+        tsi_charge_phone = #{tsiChargePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLawPerson != null" >
+        tsi_law_person = #{tsiLawPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLawPersonCardNumber != null" >
+        tsi_law_person_card_number = #{tsiLawPersonCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiLawPhone != null" >
+        tsi_law_phone = #{tsiLawPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiCompanyPhone != null" >
+        tsi_company_phone = #{tsiCompanyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPayTaxesNumber != null" >
+        tsi_pay_taxes_number = #{tsiPayTaxesNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiBankId != null" >
+        tsi_bank_id = #{tsiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankAccount != null" >
+        tsi_bank_account = #{tsiBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiBankProvId != null" >
+        tsi_bank_prov_id = #{tsiBankProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankCityId != null" >
+        tsi_bank_city_id = #{tsiBankCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankRegionId != null" >
+        tsi_bank_region_id = #{tsiBankRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiBankBranchName != null" >
+        tsi_bank_branch_name = #{tsiBankBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiYyzh != null" >
+        tsi_yyzh = #{tsiYyzh,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiDesp != null" >
+        tsi_desp = #{tsiDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiAddDate != null" >
+        tsi_add_date = #{tsiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsiAddType != null" >
+        tsi_add_type = #{tsiAddType,jdbcType=INTEGER},
+      </if>
+      <if test="tsiAddPerson != null" >
+        tsi_add_person = #{tsiAddPerson,jdbcType=BIGINT},
+      </if>
+      <if test="tsiStatus != null" >
+        tsi_status = #{tsiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsiCheckPerson != null" >
+        tsi_check_person = #{tsiCheckPerson,jdbcType=BIGINT},
+      </if>
+      <if test="tsiCheckTime != null" >
+        tsi_check_time = #{tsiCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsiCheckDesp != null" >
+        tsi_check_desp = #{tsiCheckDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiParentId != null" >
+        tsi_parent_id = #{tsiParentId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiAmount != null" >
+        tsi_amount = #{tsiAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsiFrozenAmount != null" >
+        tsi_frozen_amount = #{tsiFrozenAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsiIcon != null" >
+        tsi_icon = #{tsiIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiAgentId != null" >
+        tsi_agent_id = #{tsiAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="tsiIdentityStatus != null" >
+        tsi_identity_status = #{tsiIdentityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsiBankCardholderName != null" >
+        tsi_bank_cardholder_name = #{tsiBankCardholderName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbShipperInfo" >
+    update tb_shipper_info
+    set tsi_name = #{tsiName,jdbcType=VARCHAR},
+      tsi_simple_name = #{tsiSimpleName,jdbcType=VARCHAR},
+      tsi_loginUser = #{tsiLoginuser,jdbcType=VARCHAR},
+      tsi_password = #{tsiPassword,jdbcType=VARCHAR},
+      tsi_prov_id = #{tsiProvId,jdbcType=BIGINT},
+      tsi_city_id = #{tsiCityId,jdbcType=BIGINT},
+      tsi_region_id = #{tsiRegionId,jdbcType=BIGINT},
+      tsi_addresss = #{tsiAddresss,jdbcType=VARCHAR},
+      tsi_longitude = #{tsiLongitude,jdbcType=VARCHAR},
+      tsi_latitude = #{tsiLatitude,jdbcType=VARCHAR},
+      tsi_charge_person = #{tsiChargePerson,jdbcType=VARCHAR},
+      tsi_charge_phone = #{tsiChargePhone,jdbcType=VARCHAR},
+      tsi_law_person = #{tsiLawPerson,jdbcType=VARCHAR},
+      tsi_law_person_card_number = #{tsiLawPersonCardNumber,jdbcType=VARCHAR},
+      tsi_law_phone = #{tsiLawPhone,jdbcType=VARCHAR},
+      tsi_company_phone = #{tsiCompanyPhone,jdbcType=VARCHAR},
+      tsi_pay_taxes_number = #{tsiPayTaxesNumber,jdbcType=VARCHAR},
+      tsi_bank_id = #{tsiBankId,jdbcType=BIGINT},
+      tsi_bank_account = #{tsiBankAccount,jdbcType=VARCHAR},
+      tsi_bank_prov_id = #{tsiBankProvId,jdbcType=BIGINT},
+      tsi_bank_city_id = #{tsiBankCityId,jdbcType=BIGINT},
+      tsi_bank_region_id = #{tsiBankRegionId,jdbcType=BIGINT},
+      tsi_bank_branch_name = #{tsiBankBranchName,jdbcType=VARCHAR},
+      tsi_yyzh = #{tsiYyzh,jdbcType=VARCHAR},
+      tsi_desp = #{tsiDesp,jdbcType=VARCHAR},
+      tsi_add_date = #{tsiAddDate,jdbcType=TIMESTAMP},
+      tsi_add_type = #{tsiAddType,jdbcType=INTEGER},
+      tsi_add_person = #{tsiAddPerson,jdbcType=BIGINT},
+      tsi_status = #{tsiStatus,jdbcType=INTEGER},
+      tsi_check_person = #{tsiCheckPerson,jdbcType=BIGINT},
+      tsi_check_time = #{tsiCheckTime,jdbcType=TIMESTAMP},
+      tsi_check_desp = #{tsiCheckDesp,jdbcType=VARCHAR},
+      tsi_parent_id = #{tsiParentId,jdbcType=BIGINT},
+      tsi_amount = #{tsiAmount,jdbcType=DOUBLE},
+      tsi_frozen_amount = #{tsiFrozenAmount,jdbcType=DOUBLE},
+      tsi_icon = #{tsiIcon,jdbcType=VARCHAR},
+      tsi_agent_id = #{tsiAgentId,jdbcType=INTEGER},
+      tsi_identity_status = #{tsiIdentityStatus,jdbcType=INTEGER},
+      tsi_bank_cardholder_name = #{tsiBankCardholderName,jdbcType=VARCHAR}
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </update>
+</mapper>

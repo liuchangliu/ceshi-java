@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbBackstageStaffInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbBackstageStaffInfo" >
+    <id column="tbsi_id" property="tbsiId" jdbcType="BIGINT" />
+    <result column="tbsi_name" property="tbsiName" jdbcType="VARCHAR" />
+    <result column="tbsi_phone" property="tbsiPhone" jdbcType="VARCHAR" />
+    <result column="tbsi_card_number" property="tbsiCardNumber" jdbcType="VARCHAR" />
+    <result column="tbsi_position" property="tbsiPosition" jdbcType="BIGINT" />
+    <result column="tbsi_addresss" property="tbsiAddresss" jdbcType="VARCHAR" />
+    <result column="tbsi_add_date" property="tbsiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tbsi_status" property="tbsiStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tbsi_id, tbsi_name, tbsi_phone, tbsi_card_number, tbsi_position, tbsi_addresss, tbsi_add_date, 
+    tbsi_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_backstage_staff_info
+    where tbsi_id = #{tbsiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_backstage_staff_info
+    where tbsi_id = #{tbsiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbBackstageStaffInfo" >
+    insert into tb_backstage_staff_info (tbsi_id, tbsi_name, tbsi_phone, 
+      tbsi_card_number, tbsi_position, tbsi_addresss, 
+      tbsi_add_date, tbsi_status)
+    values (#{tbsiId,jdbcType=BIGINT}, #{tbsiName,jdbcType=VARCHAR}, #{tbsiPhone,jdbcType=VARCHAR}, 
+      #{tbsiCardNumber,jdbcType=VARCHAR}, #{tbsiPosition,jdbcType=BIGINT}, #{tbsiAddresss,jdbcType=VARCHAR}, 
+      #{tbsiAddDate,jdbcType=TIMESTAMP}, #{tbsiStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbBackstageStaffInfo" >
+    insert into tb_backstage_staff_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tbsiId != null" >
+        tbsi_id,
+      </if>
+      <if test="tbsiName != null" >
+        tbsi_name,
+      </if>
+      <if test="tbsiPhone != null" >
+        tbsi_phone,
+      </if>
+      <if test="tbsiCardNumber != null" >
+        tbsi_card_number,
+      </if>
+      <if test="tbsiPosition != null" >
+        tbsi_position,
+      </if>
+      <if test="tbsiAddresss != null" >
+        tbsi_addresss,
+      </if>
+      <if test="tbsiAddDate != null" >
+        tbsi_add_date,
+      </if>
+      <if test="tbsiStatus != null" >
+        tbsi_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tbsiId != null" >
+        #{tbsiId,jdbcType=BIGINT},
+      </if>
+      <if test="tbsiName != null" >
+        #{tbsiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiPhone != null" >
+        #{tbsiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiCardNumber != null" >
+        #{tbsiCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiPosition != null" >
+        #{tbsiPosition,jdbcType=BIGINT},
+      </if>
+      <if test="tbsiAddresss != null" >
+        #{tbsiAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiAddDate != null" >
+        #{tbsiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tbsiStatus != null" >
+        #{tbsiStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbBackstageStaffInfo" >
+    update tb_backstage_staff_info
+    <set >
+      <if test="tbsiName != null" >
+        tbsi_name = #{tbsiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiPhone != null" >
+        tbsi_phone = #{tbsiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiCardNumber != null" >
+        tbsi_card_number = #{tbsiCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiPosition != null" >
+        tbsi_position = #{tbsiPosition,jdbcType=BIGINT},
+      </if>
+      <if test="tbsiAddresss != null" >
+        tbsi_addresss = #{tbsiAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsiAddDate != null" >
+        tbsi_add_date = #{tbsiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tbsiStatus != null" >
+        tbsi_status = #{tbsiStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tbsi_id = #{tbsiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbBackstageStaffInfo" >
+    update tb_backstage_staff_info
+    set tbsi_name = #{tbsiName,jdbcType=VARCHAR},
+      tbsi_phone = #{tbsiPhone,jdbcType=VARCHAR},
+      tbsi_card_number = #{tbsiCardNumber,jdbcType=VARCHAR},
+      tbsi_position = #{tbsiPosition,jdbcType=BIGINT},
+      tbsi_addresss = #{tbsiAddresss,jdbcType=VARCHAR},
+      tbsi_add_date = #{tbsiAddDate,jdbcType=TIMESTAMP},
+      tbsi_status = #{tbsiStatus,jdbcType=INTEGER}
+    where tbsi_id = #{tbsiId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.RolesandmenuMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Rolesandmenu" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="rolesId" property="rolesid" jdbcType="INTEGER" />
+    <result column="menuId" property="menuid" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="addUserId" property="adduserid" jdbcType="BIGINT" />
+    <result column="addUsername" property="addusername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rolesId, menuId, addtime, addUserId, addUsername
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from rolesandmenu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from rolesandmenu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.Rolesandmenu" >
+    insert into rolesandmenu (id, rolesId, menuId, 
+      addtime, addUserId, addUsername
+      )
+    values (#{id,jdbcType=BIGINT}, #{rolesid,jdbcType=INTEGER}, #{menuid,jdbcType=INTEGER}, 
+      #{addtime,jdbcType=TIMESTAMP}, #{adduserid,jdbcType=BIGINT}, #{addusername,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.Rolesandmenu" >
+    insert into rolesandmenu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rolesid != null" >
+        rolesId,
+      </if>
+      <if test="menuid != null" >
+        menuId,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="adduserid != null" >
+        addUserId,
+      </if>
+      <if test="addusername != null" >
+        addUsername,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="rolesid != null" >
+        #{rolesid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null" >
+        #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        #{addusername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Rolesandmenu" >
+    update rolesandmenu
+    <set >
+      <if test="rolesid != null" >
+        rolesId = #{rolesid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null" >
+        menuId = #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        addUserId = #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        addUsername = #{addusername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Rolesandmenu" >
+    update rolesandmenu
+    set rolesId = #{rolesid,jdbcType=INTEGER},
+      menuId = #{menuid,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      addUserId = #{adduserid,jdbcType=BIGINT},
+      addUsername = #{addusername,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbDriverInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbDriverInfo" >
+    <id column="tdi_id" property="tdiId" jdbcType="BIGINT" />
+    <result column="tdi_name" property="tdiName" jdbcType="VARCHAR" />
+    <result column="tdi_loginUser" property="tdiLoginuser" jdbcType="VARCHAR" />
+    <result column="tdi_password" property="tdiPassword" jdbcType="VARCHAR" />
+    <result column="tdi_phone" property="tdiPhone" jdbcType="VARCHAR" />
+    <result column="tdi_integral" property="tdiIntegral" jdbcType="DOUBLE" />
+    <result column="tdi_amount" property="tdiAmount" jdbcType="DOUBLE" />
+    <result column="tdi_frozen_amount" property="tdiFrozenAmount" jdbcType="DOUBLE" />
+    <result column="tdi_extension_num" property="tdiExtensionNum" jdbcType="INTEGER" />
+    <result column="tdi_extension_amount" property="tdiExtensionAmount" jdbcType="DOUBLE" />
+    <result column="tdi_receivables" property="tdiReceivables" jdbcType="DOUBLE" />
+    <result column="tdi_invitation_code" property="tdiInvitationCode" jdbcType="VARCHAR" />
+    <result column="tdi_Invited_code" property="tdiInvitedCode" jdbcType="VARCHAR" />
+    <result column="tdi_bank_id" property="tdiBankId" jdbcType="BIGINT" />
+    <result column="tdi_bank_account" property="tdiBankAccount" jdbcType="VARCHAR" />
+    <result column="tdi_bank_prov_id" property="tdiBankProvId" jdbcType="BIGINT" />
+    <result column="tdi_bank_city_id" property="tdiBankCityId" jdbcType="BIGINT" />
+    <result column="tdi_bank_region_id" property="tdiBankRegionId" jdbcType="BIGINT" />
+    <result column="tdi_bank_addresss" property="tdiBankAddresss" jdbcType="VARCHAR" />
+    <result column="tdi_bank_branch_name" property="tdiBankBranchName" jdbcType="VARCHAR" />
+    <result column="tdi_bank_cardholder_name" property="tdiBankCardholderName" jdbcType="VARCHAR" />
+    <result column="tdi_bank_card_number" property="tdiBankCardNumber" jdbcType="VARCHAR" />
+    <result column="tdi_car_number" property="tdiCarNumber" jdbcType="VARCHAR" />
+    <result column="tdi_car_type" property="tdiCarType" jdbcType="BIGINT" />
+    <result column="tdi_car_length" property="tdiCarLength" jdbcType="BIGINT" />
+    <result column="tdi_authenticated_load_quality" property="tdiAuthenticatedLoadQuality" jdbcType="DOUBLE" />
+    <result column="tdi_Full_load_quality" property="tdiFullLoadQuality" jdbcType="DOUBLE" />
+    <result column="tdi_transport_pipe_number" property="tdiTransportPipeNumber" jdbcType="VARCHAR" />
+    <result column="tdi_employment_number" property="tdiEmploymentNumber" jdbcType="VARCHAR" />
+    <result column="tdi_driver_license_image" property="tdiDriverLicenseImage" jdbcType="VARCHAR" />
+    <result column="tdi_driving_license_image" property="tdiDrivingLicenseImage" jdbcType="VARCHAR" />
+    <result column="tdi_road_transport_license_image" property="tdiRoadTransportLicenseImage" jdbcType="VARCHAR" />
+    <result column="tdi_identity_face_image" property="tdiIdentityFaceImage" jdbcType="VARCHAR" />
+    <result column="tdi_home_prov_id" property="tdiHomeProvId" jdbcType="BIGINT" />
+    <result column="tdi_home_city_id" property="tdiHomeCityId" jdbcType="BIGINT" />
+    <result column="tdi_home_region_id" property="tdiHomeRegionId" jdbcType="BIGINT" />
+    <result column="tdi_home_address" property="tdiHomeAddress" jdbcType="VARCHAR" />
+    <result column="tdi_identity_status" property="tdiIdentityStatus" jdbcType="INTEGER" />
+    <result column="tdi_status" property="tdiStatus" jdbcType="INTEGER" />
+    <result column="tdi_add_date" property="tdiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tdi_add_type" property="tdiAddType" jdbcType="INTEGER" />
+    <result column="tdi_refuse_reason" property="tdiRefuseReason" jdbcType="VARCHAR" />
+    <result column="tdi_driver_head_img" property="tdiDriverHeadImg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tdi_id, tdi_name, tdi_loginUser, tdi_password, tdi_phone, tdi_integral, tdi_amount, 
+    tdi_frozen_amount, tdi_extension_num, tdi_extension_amount, tdi_receivables, tdi_invitation_code, 
+    tdi_Invited_code, tdi_bank_id, tdi_bank_account, tdi_bank_prov_id, tdi_bank_city_id, 
+    tdi_bank_region_id, tdi_bank_addresss, tdi_bank_branch_name, tdi_bank_cardholder_name, 
+    tdi_bank_card_number, tdi_car_number, tdi_car_type, tdi_car_length, tdi_authenticated_load_quality, 
+    tdi_Full_load_quality, tdi_transport_pipe_number, tdi_employment_number, tdi_driver_license_image, 
+    tdi_driving_license_image, tdi_road_transport_license_image, tdi_identity_face_image, 
+    tdi_home_prov_id, tdi_home_city_id, tdi_home_region_id, tdi_home_address, tdi_identity_status, 
+    tdi_status, tdi_add_date, tdi_add_type, tdi_refuse_reason, tdi_driver_head_img
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_driver_info
+    where tdi_id = #{tdiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_driver_info
+    where tdi_id = #{tdiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbDriverInfo" >
+    insert into tb_driver_info (tdi_id, tdi_name, tdi_loginUser, 
+      tdi_password, tdi_phone, tdi_integral, 
+      tdi_amount, tdi_frozen_amount, tdi_extension_num, 
+      tdi_extension_amount, tdi_receivables, tdi_invitation_code, 
+      tdi_Invited_code, tdi_bank_id, tdi_bank_account, 
+      tdi_bank_prov_id, tdi_bank_city_id, tdi_bank_region_id, 
+      tdi_bank_addresss, tdi_bank_branch_name, tdi_bank_cardholder_name, 
+      tdi_bank_card_number, tdi_car_number, tdi_car_type, 
+      tdi_car_length, tdi_authenticated_load_quality, 
+      tdi_Full_load_quality, tdi_transport_pipe_number, 
+      tdi_employment_number, tdi_driver_license_image, 
+      tdi_driving_license_image, tdi_road_transport_license_image, 
+      tdi_identity_face_image, tdi_home_prov_id, tdi_home_city_id, 
+      tdi_home_region_id, tdi_home_address, tdi_identity_status, 
+      tdi_status, tdi_add_date, tdi_add_type, 
+      tdi_refuse_reason, tdi_driver_head_img)
+    values (#{tdiId,jdbcType=BIGINT}, #{tdiName,jdbcType=VARCHAR}, #{tdiLoginuser,jdbcType=VARCHAR}, 
+      #{tdiPassword,jdbcType=VARCHAR}, #{tdiPhone,jdbcType=VARCHAR}, #{tdiIntegral,jdbcType=DOUBLE}, 
+      #{tdiAmount,jdbcType=DOUBLE}, #{tdiFrozenAmount,jdbcType=DOUBLE}, #{tdiExtensionNum,jdbcType=INTEGER}, 
+      #{tdiExtensionAmount,jdbcType=DOUBLE}, #{tdiReceivables,jdbcType=DOUBLE}, #{tdiInvitationCode,jdbcType=VARCHAR}, 
+      #{tdiInvitedCode,jdbcType=VARCHAR}, #{tdiBankId,jdbcType=BIGINT}, #{tdiBankAccount,jdbcType=VARCHAR}, 
+      #{tdiBankProvId,jdbcType=BIGINT}, #{tdiBankCityId,jdbcType=BIGINT}, #{tdiBankRegionId,jdbcType=BIGINT}, 
+      #{tdiBankAddresss,jdbcType=VARCHAR}, #{tdiBankBranchName,jdbcType=VARCHAR}, #{tdiBankCardholderName,jdbcType=VARCHAR}, 
+      #{tdiBankCardNumber,jdbcType=VARCHAR}, #{tdiCarNumber,jdbcType=VARCHAR}, #{tdiCarType,jdbcType=BIGINT}, 
+      #{tdiCarLength,jdbcType=BIGINT}, #{tdiAuthenticatedLoadQuality,jdbcType=DOUBLE}, 
+      #{tdiFullLoadQuality,jdbcType=DOUBLE}, #{tdiTransportPipeNumber,jdbcType=VARCHAR}, 
+      #{tdiEmploymentNumber,jdbcType=VARCHAR}, #{tdiDriverLicenseImage,jdbcType=VARCHAR}, 
+      #{tdiDrivingLicenseImage,jdbcType=VARCHAR}, #{tdiRoadTransportLicenseImage,jdbcType=VARCHAR}, 
+      #{tdiIdentityFaceImage,jdbcType=VARCHAR}, #{tdiHomeProvId,jdbcType=BIGINT}, #{tdiHomeCityId,jdbcType=BIGINT}, 
+      #{tdiHomeRegionId,jdbcType=BIGINT}, #{tdiHomeAddress,jdbcType=VARCHAR}, #{tdiIdentityStatus,jdbcType=INTEGER}, 
+      #{tdiStatus,jdbcType=INTEGER}, #{tdiAddDate,jdbcType=TIMESTAMP}, #{tdiAddType,jdbcType=INTEGER}, 
+      #{tdiRefuseReason,jdbcType=VARCHAR}, #{tdiDriverHeadImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbDriverInfo" >
+    insert into tb_driver_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tdiId != null" >
+        tdi_id,
+      </if>
+      <if test="tdiName != null" >
+        tdi_name,
+      </if>
+      <if test="tdiLoginuser != null" >
+        tdi_loginUser,
+      </if>
+      <if test="tdiPassword != null" >
+        tdi_password,
+      </if>
+      <if test="tdiPhone != null" >
+        tdi_phone,
+      </if>
+      <if test="tdiIntegral != null" >
+        tdi_integral,
+      </if>
+      <if test="tdiAmount != null" >
+        tdi_amount,
+      </if>
+      <if test="tdiFrozenAmount != null" >
+        tdi_frozen_amount,
+      </if>
+      <if test="tdiExtensionNum != null" >
+        tdi_extension_num,
+      </if>
+      <if test="tdiExtensionAmount != null" >
+        tdi_extension_amount,
+      </if>
+      <if test="tdiReceivables != null" >
+        tdi_receivables,
+      </if>
+      <if test="tdiInvitationCode != null" >
+        tdi_invitation_code,
+      </if>
+      <if test="tdiInvitedCode != null" >
+        tdi_Invited_code,
+      </if>
+      <if test="tdiBankId != null" >
+        tdi_bank_id,
+      </if>
+      <if test="tdiBankAccount != null" >
+        tdi_bank_account,
+      </if>
+      <if test="tdiBankProvId != null" >
+        tdi_bank_prov_id,
+      </if>
+      <if test="tdiBankCityId != null" >
+        tdi_bank_city_id,
+      </if>
+      <if test="tdiBankRegionId != null" >
+        tdi_bank_region_id,
+      </if>
+      <if test="tdiBankAddresss != null" >
+        tdi_bank_addresss,
+      </if>
+      <if test="tdiBankBranchName != null" >
+        tdi_bank_branch_name,
+      </if>
+      <if test="tdiBankCardholderName != null" >
+        tdi_bank_cardholder_name,
+      </if>
+      <if test="tdiBankCardNumber != null" >
+        tdi_bank_card_number,
+      </if>
+      <if test="tdiCarNumber != null" >
+        tdi_car_number,
+      </if>
+      <if test="tdiCarType != null" >
+        tdi_car_type,
+      </if>
+      <if test="tdiCarLength != null" >
+        tdi_car_length,
+      </if>
+      <if test="tdiAuthenticatedLoadQuality != null" >
+        tdi_authenticated_load_quality,
+      </if>
+      <if test="tdiFullLoadQuality != null" >
+        tdi_Full_load_quality,
+      </if>
+      <if test="tdiTransportPipeNumber != null" >
+        tdi_transport_pipe_number,
+      </if>
+      <if test="tdiEmploymentNumber != null" >
+        tdi_employment_number,
+      </if>
+      <if test="tdiDriverLicenseImage != null" >
+        tdi_driver_license_image,
+      </if>
+      <if test="tdiDrivingLicenseImage != null" >
+        tdi_driving_license_image,
+      </if>
+      <if test="tdiRoadTransportLicenseImage != null" >
+        tdi_road_transport_license_image,
+      </if>
+      <if test="tdiIdentityFaceImage != null" >
+        tdi_identity_face_image,
+      </if>
+      <if test="tdiHomeProvId != null" >
+        tdi_home_prov_id,
+      </if>
+      <if test="tdiHomeCityId != null" >
+        tdi_home_city_id,
+      </if>
+      <if test="tdiHomeRegionId != null" >
+        tdi_home_region_id,
+      </if>
+      <if test="tdiHomeAddress != null" >
+        tdi_home_address,
+      </if>
+      <if test="tdiIdentityStatus != null" >
+        tdi_identity_status,
+      </if>
+      <if test="tdiStatus != null" >
+        tdi_status,
+      </if>
+      <if test="tdiAddDate != null" >
+        tdi_add_date,
+      </if>
+      <if test="tdiAddType != null" >
+        tdi_add_type,
+      </if>
+      <if test="tdiRefuseReason != null" >
+        tdi_refuse_reason,
+      </if>
+      <if test="tdiDriverHeadImg != null" >
+        tdi_driver_head_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tdiId != null" >
+        #{tdiId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiName != null" >
+        #{tdiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiLoginuser != null" >
+        #{tdiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiPassword != null" >
+        #{tdiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiPhone != null" >
+        #{tdiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiIntegral != null" >
+        #{tdiIntegral,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiAmount != null" >
+        #{tdiAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiFrozenAmount != null" >
+        #{tdiFrozenAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiExtensionNum != null" >
+        #{tdiExtensionNum,jdbcType=INTEGER},
+      </if>
+      <if test="tdiExtensionAmount != null" >
+        #{tdiExtensionAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiReceivables != null" >
+        #{tdiReceivables,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiInvitationCode != null" >
+        #{tdiInvitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiInvitedCode != null" >
+        #{tdiInvitedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankId != null" >
+        #{tdiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankAccount != null" >
+        #{tdiBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankProvId != null" >
+        #{tdiBankProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankCityId != null" >
+        #{tdiBankCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankRegionId != null" >
+        #{tdiBankRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankAddresss != null" >
+        #{tdiBankAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankBranchName != null" >
+        #{tdiBankBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankCardholderName != null" >
+        #{tdiBankCardholderName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankCardNumber != null" >
+        #{tdiBankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiCarNumber != null" >
+        #{tdiCarNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiCarType != null" >
+        #{tdiCarType,jdbcType=BIGINT},
+      </if>
+      <if test="tdiCarLength != null" >
+        #{tdiCarLength,jdbcType=BIGINT},
+      </if>
+      <if test="tdiAuthenticatedLoadQuality != null" >
+        #{tdiAuthenticatedLoadQuality,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiFullLoadQuality != null" >
+        #{tdiFullLoadQuality,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiTransportPipeNumber != null" >
+        #{tdiTransportPipeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiEmploymentNumber != null" >
+        #{tdiEmploymentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiDriverLicenseImage != null" >
+        #{tdiDriverLicenseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiDrivingLicenseImage != null" >
+        #{tdiDrivingLicenseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiRoadTransportLicenseImage != null" >
+        #{tdiRoadTransportLicenseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiIdentityFaceImage != null" >
+        #{tdiIdentityFaceImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiHomeProvId != null" >
+        #{tdiHomeProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiHomeCityId != null" >
+        #{tdiHomeCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiHomeRegionId != null" >
+        #{tdiHomeRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiHomeAddress != null" >
+        #{tdiHomeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiIdentityStatus != null" >
+        #{tdiIdentityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tdiStatus != null" >
+        #{tdiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tdiAddDate != null" >
+        #{tdiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tdiAddType != null" >
+        #{tdiAddType,jdbcType=INTEGER},
+      </if>
+      <if test="tdiRefuseReason != null" >
+        #{tdiRefuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiDriverHeadImg != null" >
+        #{tdiDriverHeadImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbDriverInfo" >
+    update tb_driver_info
+    <set >
+      <if test="tdiName != null" >
+        tdi_name = #{tdiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiLoginuser != null" >
+        tdi_loginUser = #{tdiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiPassword != null" >
+        tdi_password = #{tdiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiPhone != null" >
+        tdi_phone = #{tdiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiIntegral != null" >
+        tdi_integral = #{tdiIntegral,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiAmount != null" >
+        tdi_amount = #{tdiAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiFrozenAmount != null" >
+        tdi_frozen_amount = #{tdiFrozenAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiExtensionNum != null" >
+        tdi_extension_num = #{tdiExtensionNum,jdbcType=INTEGER},
+      </if>
+      <if test="tdiExtensionAmount != null" >
+        tdi_extension_amount = #{tdiExtensionAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiReceivables != null" >
+        tdi_receivables = #{tdiReceivables,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiInvitationCode != null" >
+        tdi_invitation_code = #{tdiInvitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiInvitedCode != null" >
+        tdi_Invited_code = #{tdiInvitedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankId != null" >
+        tdi_bank_id = #{tdiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankAccount != null" >
+        tdi_bank_account = #{tdiBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankProvId != null" >
+        tdi_bank_prov_id = #{tdiBankProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankCityId != null" >
+        tdi_bank_city_id = #{tdiBankCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankRegionId != null" >
+        tdi_bank_region_id = #{tdiBankRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiBankAddresss != null" >
+        tdi_bank_addresss = #{tdiBankAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankBranchName != null" >
+        tdi_bank_branch_name = #{tdiBankBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankCardholderName != null" >
+        tdi_bank_cardholder_name = #{tdiBankCardholderName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiBankCardNumber != null" >
+        tdi_bank_card_number = #{tdiBankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiCarNumber != null" >
+        tdi_car_number = #{tdiCarNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiCarType != null" >
+        tdi_car_type = #{tdiCarType,jdbcType=BIGINT},
+      </if>
+      <if test="tdiCarLength != null" >
+        tdi_car_length = #{tdiCarLength,jdbcType=BIGINT},
+      </if>
+      <if test="tdiAuthenticatedLoadQuality != null" >
+        tdi_authenticated_load_quality = #{tdiAuthenticatedLoadQuality,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiFullLoadQuality != null" >
+        tdi_Full_load_quality = #{tdiFullLoadQuality,jdbcType=DOUBLE},
+      </if>
+      <if test="tdiTransportPipeNumber != null" >
+        tdi_transport_pipe_number = #{tdiTransportPipeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiEmploymentNumber != null" >
+        tdi_employment_number = #{tdiEmploymentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiDriverLicenseImage != null" >
+        tdi_driver_license_image = #{tdiDriverLicenseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiDrivingLicenseImage != null" >
+        tdi_driving_license_image = #{tdiDrivingLicenseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiRoadTransportLicenseImage != null" >
+        tdi_road_transport_license_image = #{tdiRoadTransportLicenseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiIdentityFaceImage != null" >
+        tdi_identity_face_image = #{tdiIdentityFaceImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiHomeProvId != null" >
+        tdi_home_prov_id = #{tdiHomeProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiHomeCityId != null" >
+        tdi_home_city_id = #{tdiHomeCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiHomeRegionId != null" >
+        tdi_home_region_id = #{tdiHomeRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tdiHomeAddress != null" >
+        tdi_home_address = #{tdiHomeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiIdentityStatus != null" >
+        tdi_identity_status = #{tdiIdentityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tdiStatus != null" >
+        tdi_status = #{tdiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tdiAddDate != null" >
+        tdi_add_date = #{tdiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tdiAddType != null" >
+        tdi_add_type = #{tdiAddType,jdbcType=INTEGER},
+      </if>
+      <if test="tdiRefuseReason != null" >
+        tdi_refuse_reason = #{tdiRefuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="tdiDriverHeadImg != null" >
+        tdi_driver_head_img = #{tdiDriverHeadImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tdi_id = #{tdiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbDriverInfo" >
+    update tb_driver_info
+    set tdi_name = #{tdiName,jdbcType=VARCHAR},
+      tdi_loginUser = #{tdiLoginuser,jdbcType=VARCHAR},
+      tdi_password = #{tdiPassword,jdbcType=VARCHAR},
+      tdi_phone = #{tdiPhone,jdbcType=VARCHAR},
+      tdi_integral = #{tdiIntegral,jdbcType=DOUBLE},
+      tdi_amount = #{tdiAmount,jdbcType=DOUBLE},
+      tdi_frozen_amount = #{tdiFrozenAmount,jdbcType=DOUBLE},
+      tdi_extension_num = #{tdiExtensionNum,jdbcType=INTEGER},
+      tdi_extension_amount = #{tdiExtensionAmount,jdbcType=DOUBLE},
+      tdi_receivables = #{tdiReceivables,jdbcType=DOUBLE},
+      tdi_invitation_code = #{tdiInvitationCode,jdbcType=VARCHAR},
+      tdi_Invited_code = #{tdiInvitedCode,jdbcType=VARCHAR},
+      tdi_bank_id = #{tdiBankId,jdbcType=BIGINT},
+      tdi_bank_account = #{tdiBankAccount,jdbcType=VARCHAR},
+      tdi_bank_prov_id = #{tdiBankProvId,jdbcType=BIGINT},
+      tdi_bank_city_id = #{tdiBankCityId,jdbcType=BIGINT},
+      tdi_bank_region_id = #{tdiBankRegionId,jdbcType=BIGINT},
+      tdi_bank_addresss = #{tdiBankAddresss,jdbcType=VARCHAR},
+      tdi_bank_branch_name = #{tdiBankBranchName,jdbcType=VARCHAR},
+      tdi_bank_cardholder_name = #{tdiBankCardholderName,jdbcType=VARCHAR},
+      tdi_bank_card_number = #{tdiBankCardNumber,jdbcType=VARCHAR},
+      tdi_car_number = #{tdiCarNumber,jdbcType=VARCHAR},
+      tdi_car_type = #{tdiCarType,jdbcType=BIGINT},
+      tdi_car_length = #{tdiCarLength,jdbcType=BIGINT},
+      tdi_authenticated_load_quality = #{tdiAuthenticatedLoadQuality,jdbcType=DOUBLE},
+      tdi_Full_load_quality = #{tdiFullLoadQuality,jdbcType=DOUBLE},
+      tdi_transport_pipe_number = #{tdiTransportPipeNumber,jdbcType=VARCHAR},
+      tdi_employment_number = #{tdiEmploymentNumber,jdbcType=VARCHAR},
+      tdi_driver_license_image = #{tdiDriverLicenseImage,jdbcType=VARCHAR},
+      tdi_driving_license_image = #{tdiDrivingLicenseImage,jdbcType=VARCHAR},
+      tdi_road_transport_license_image = #{tdiRoadTransportLicenseImage,jdbcType=VARCHAR},
+      tdi_identity_face_image = #{tdiIdentityFaceImage,jdbcType=VARCHAR},
+      tdi_home_prov_id = #{tdiHomeProvId,jdbcType=BIGINT},
+      tdi_home_city_id = #{tdiHomeCityId,jdbcType=BIGINT},
+      tdi_home_region_id = #{tdiHomeRegionId,jdbcType=BIGINT},
+      tdi_home_address = #{tdiHomeAddress,jdbcType=VARCHAR},
+      tdi_identity_status = #{tdiIdentityStatus,jdbcType=INTEGER},
+      tdi_status = #{tdiStatus,jdbcType=INTEGER},
+      tdi_add_date = #{tdiAddDate,jdbcType=TIMESTAMP},
+      tdi_add_type = #{tdiAddType,jdbcType=INTEGER},
+      tdi_refuse_reason = #{tdiRefuseReason,jdbcType=VARCHAR},
+      tdi_driver_head_img = #{tdiDriverHeadImg,jdbcType=VARCHAR}
+    where tdi_id = #{tdiId,jdbcType=BIGINT}
+  </update>
+</mapper>

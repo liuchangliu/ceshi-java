@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbShipperDiverRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbShipperDiverRelation" >
+    <id column="tsdr_id" property="tsdrId" jdbcType="BIGINT" />
+    <result column="tsdr_shipper_id" property="tsdrShipperId" jdbcType="BIGINT" />
+    <result column="tsdr_diver_id" property="tsdrDiverId" jdbcType="BIGINT" />
+    <result column="tsdr_status" property="tsdrStatus" jdbcType="INTEGER" />
+    <result column="tsdr_add_date" property="tsdrAddDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsdr_id, tsdr_shipper_id, tsdr_diver_id, tsdr_status, tsdr_add_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shipper_diver_relation
+    where tsdr_id = #{tsdrId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shipper_diver_relation
+    where tsdr_id = #{tsdrId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbShipperDiverRelation" >
+    insert into tb_shipper_diver_relation (tsdr_id, tsdr_shipper_id, tsdr_diver_id, 
+      tsdr_status, tsdr_add_date)
+    values (#{tsdrId,jdbcType=BIGINT}, #{tsdrShipperId,jdbcType=BIGINT}, #{tsdrDiverId,jdbcType=BIGINT}, 
+      #{tsdrStatus,jdbcType=INTEGER}, #{tsdrAddDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbShipperDiverRelation" >
+    insert into tb_shipper_diver_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsdrId != null" >
+        tsdr_id,
+      </if>
+      <if test="tsdrShipperId != null" >
+        tsdr_shipper_id,
+      </if>
+      <if test="tsdrDiverId != null" >
+        tsdr_diver_id,
+      </if>
+      <if test="tsdrStatus != null" >
+        tsdr_status,
+      </if>
+      <if test="tsdrAddDate != null" >
+        tsdr_add_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsdrId != null" >
+        #{tsdrId,jdbcType=BIGINT},
+      </if>
+      <if test="tsdrShipperId != null" >
+        #{tsdrShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsdrDiverId != null" >
+        #{tsdrDiverId,jdbcType=BIGINT},
+      </if>
+      <if test="tsdrStatus != null" >
+        #{tsdrStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsdrAddDate != null" >
+        #{tsdrAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbShipperDiverRelation" >
+    update tb_shipper_diver_relation
+    <set >
+      <if test="tsdrShipperId != null" >
+        tsdr_shipper_id = #{tsdrShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsdrDiverId != null" >
+        tsdr_diver_id = #{tsdrDiverId,jdbcType=BIGINT},
+      </if>
+      <if test="tsdrStatus != null" >
+        tsdr_status = #{tsdrStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsdrAddDate != null" >
+        tsdr_add_date = #{tsdrAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tsdr_id = #{tsdrId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbShipperDiverRelation" >
+    update tb_shipper_diver_relation
+    set tsdr_shipper_id = #{tsdrShipperId,jdbcType=BIGINT},
+      tsdr_diver_id = #{tsdrDiverId,jdbcType=BIGINT},
+      tsdr_status = #{tsdrStatus,jdbcType=INTEGER},
+      tsdr_add_date = #{tsdrAddDate,jdbcType=TIMESTAMP}
+    where tsdr_id = #{tsdrId,jdbcType=BIGINT}
+  </update>
+</mapper>

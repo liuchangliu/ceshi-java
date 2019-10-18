@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbDriverBankInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbDriverBankInfo" >
+    <id column="tdbi_id" property="tdbiId" jdbcType="BIGINT" />
+    <result column="tdbi_bank_id" property="tdbiBankId" jdbcType="BIGINT" />
+    <result column="tdbi_driver_id" property="tdbiDriverId" jdbcType="BIGINT" />
+    <result column="tdbi_branch_name" property="tdbiBranchName" jdbcType="VARCHAR" />
+    <result column="tdbi_account" property="tdbiAccount" jdbcType="VARCHAR" />
+    <result column="tdbi_name" property="tdbiName" jdbcType="VARCHAR" />
+    <result column="tdbi_add_date" property="tdbiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tdbi_status" property="tdbiStatus" jdbcType="INTEGER" />
+    <result column="tdbi_driver_phone" property="tdbiDriverPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tdbi_id, tdbi_bank_id, tdbi_driver_id, tdbi_branch_name, tdbi_account, tdbi_name, 
+    tdbi_add_date, tdbi_status, tdbi_driver_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_driver_bank_info
+    where tdbi_id = #{tdbiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_driver_bank_info
+    where tdbi_id = #{tdbiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbDriverBankInfo" >
+    insert into tb_driver_bank_info (tdbi_id, tdbi_bank_id, tdbi_driver_id, 
+      tdbi_branch_name, tdbi_account, tdbi_name, 
+      tdbi_add_date, tdbi_status, tdbi_driver_phone
+      )
+    values (#{tdbiId,jdbcType=BIGINT}, #{tdbiBankId,jdbcType=BIGINT}, #{tdbiDriverId,jdbcType=BIGINT}, 
+      #{tdbiBranchName,jdbcType=VARCHAR}, #{tdbiAccount,jdbcType=VARCHAR}, #{tdbiName,jdbcType=VARCHAR}, 
+      #{tdbiAddDate,jdbcType=TIMESTAMP}, #{tdbiStatus,jdbcType=INTEGER}, #{tdbiDriverPhone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbDriverBankInfo" >
+    insert into tb_driver_bank_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tdbiId != null" >
+        tdbi_id,
+      </if>
+      <if test="tdbiBankId != null" >
+        tdbi_bank_id,
+      </if>
+      <if test="tdbiDriverId != null" >
+        tdbi_driver_id,
+      </if>
+      <if test="tdbiBranchName != null" >
+        tdbi_branch_name,
+      </if>
+      <if test="tdbiAccount != null" >
+        tdbi_account,
+      </if>
+      <if test="tdbiName != null" >
+        tdbi_name,
+      </if>
+      <if test="tdbiAddDate != null" >
+        tdbi_add_date,
+      </if>
+      <if test="tdbiStatus != null" >
+        tdbi_status,
+      </if>
+      <if test="tdbiDriverPhone != null" >
+        tdbi_driver_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tdbiId != null" >
+        #{tdbiId,jdbcType=BIGINT},
+      </if>
+      <if test="tdbiBankId != null" >
+        #{tdbiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tdbiDriverId != null" >
+        #{tdbiDriverId,jdbcType=BIGINT},
+      </if>
+      <if test="tdbiBranchName != null" >
+        #{tdbiBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdbiAccount != null" >
+        #{tdbiAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tdbiName != null" >
+        #{tdbiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdbiAddDate != null" >
+        #{tdbiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tdbiStatus != null" >
+        #{tdbiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tdbiDriverPhone != null" >
+        #{tdbiDriverPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbDriverBankInfo" >
+    update tb_driver_bank_info
+    <set >
+      <if test="tdbiBankId != null" >
+        tdbi_bank_id = #{tdbiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tdbiDriverId != null" >
+        tdbi_driver_id = #{tdbiDriverId,jdbcType=BIGINT},
+      </if>
+      <if test="tdbiBranchName != null" >
+        tdbi_branch_name = #{tdbiBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdbiAccount != null" >
+        tdbi_account = #{tdbiAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tdbiName != null" >
+        tdbi_name = #{tdbiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tdbiAddDate != null" >
+        tdbi_add_date = #{tdbiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tdbiStatus != null" >
+        tdbi_status = #{tdbiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tdbiDriverPhone != null" >
+        tdbi_driver_phone = #{tdbiDriverPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tdbi_id = #{tdbiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbDriverBankInfo" >
+    update tb_driver_bank_info
+    set tdbi_bank_id = #{tdbiBankId,jdbcType=BIGINT},
+      tdbi_driver_id = #{tdbiDriverId,jdbcType=BIGINT},
+      tdbi_branch_name = #{tdbiBranchName,jdbcType=VARCHAR},
+      tdbi_account = #{tdbiAccount,jdbcType=VARCHAR},
+      tdbi_name = #{tdbiName,jdbcType=VARCHAR},
+      tdbi_add_date = #{tdbiAddDate,jdbcType=TIMESTAMP},
+      tdbi_status = #{tdbiStatus,jdbcType=INTEGER},
+      tdbi_driver_phone = #{tdbiDriverPhone,jdbcType=VARCHAR}
+    where tdbi_id = #{tdbiId,jdbcType=BIGINT}
+  </update>
+</mapper>

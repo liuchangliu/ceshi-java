@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.OrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Organization" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="innerPhone" property="innerphone" jdbcType="VARCHAR" />
+    <result column="outerPhone" property="outerphone" jdbcType="VARCHAR" />
+    <result column="manager" property="manager" jdbcType="VARCHAR" />
+    <result column="assistantManager" property="assistantmanager" jdbcType="VARCHAR" />
+    <result column="pax" property="pax" jdbcType="VARCHAR" />
+    <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="sortcode" property="sortcode" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="addUser" property="adduser" jdbcType="BIGINT" />
+    <result column="addUsername" property="addusername" jdbcType="VARCHAR" />
+    <result column="modiyftime" property="modiyftime" jdbcType="TIMESTAMP" />
+    <result column="modifyUser" property="modifyuser" jdbcType="BIGINT" />
+    <result column="modifyUsername" property="modifyusername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, code, innerPhone, outerPhone, manager, assistantManager, pax, zipcode, 
+    address, parentId, remark, sortcode, status, addtime, addUser, addUsername, modiyftime, 
+    modifyUser, modifyUsername
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from organization
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.Organization" >
+    insert into organization (id, name, code, 
+      innerPhone, outerPhone, manager, 
+      assistantManager, pax, zipcode, 
+      address, parentId, remark, 
+      sortcode, status, addtime, 
+      addUser, addUsername, modiyftime, 
+      modifyUser, modifyUsername)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{innerphone,jdbcType=VARCHAR}, #{outerphone,jdbcType=VARCHAR}, #{manager,jdbcType=VARCHAR}, 
+      #{assistantmanager,jdbcType=VARCHAR}, #{pax,jdbcType=VARCHAR}, #{zipcode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{sortcode,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, 
+      #{adduser,jdbcType=BIGINT}, #{addusername,jdbcType=VARCHAR}, #{modiyftime,jdbcType=TIMESTAMP}, 
+      #{modifyuser,jdbcType=BIGINT}, #{modifyusername,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.Organization" >
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="innerphone != null" >
+        innerPhone,
+      </if>
+      <if test="outerphone != null" >
+        outerPhone,
+      </if>
+      <if test="manager != null" >
+        manager,
+      </if>
+      <if test="assistantmanager != null" >
+        assistantManager,
+      </if>
+      <if test="pax != null" >
+        pax,
+      </if>
+      <if test="zipcode != null" >
+        zipcode,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="sortcode != null" >
+        sortcode,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="adduser != null" >
+        addUser,
+      </if>
+      <if test="addusername != null" >
+        addUsername,
+      </if>
+      <if test="modiyftime != null" >
+        modiyftime,
+      </if>
+      <if test="modifyuser != null" >
+        modifyUser,
+      </if>
+      <if test="modifyusername != null" >
+        modifyUsername,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="innerphone != null" >
+        #{innerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="outerphone != null" >
+        #{outerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null" >
+        #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantmanager != null" >
+        #{assistantmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="pax != null" >
+        #{pax,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        #{sortcode,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduser != null" >
+        #{adduser,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        #{addusername,jdbcType=VARCHAR},
+      </if>
+      <if test="modiyftime != null" >
+        #{modiyftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuser != null" >
+        #{modifyuser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyusername != null" >
+        #{modifyusername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Organization" >
+    update organization
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="innerphone != null" >
+        innerPhone = #{innerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="outerphone != null" >
+        outerPhone = #{outerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null" >
+        manager = #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantmanager != null" >
+        assistantManager = #{assistantmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="pax != null" >
+        pax = #{pax,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        zipcode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        sortcode = #{sortcode,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduser != null" >
+        addUser = #{adduser,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        addUsername = #{addusername,jdbcType=VARCHAR},
+      </if>
+      <if test="modiyftime != null" >
+        modiyftime = #{modiyftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuser != null" >
+        modifyUser = #{modifyuser,jdbcType=BIGINT},
+      </if>
+      <if test="modifyusername != null" >
+        modifyUsername = #{modifyusername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Organization" >
+    update organization
+    set name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      innerPhone = #{innerphone,jdbcType=VARCHAR},
+      outerPhone = #{outerphone,jdbcType=VARCHAR},
+      manager = #{manager,jdbcType=VARCHAR},
+      assistantManager = #{assistantmanager,jdbcType=VARCHAR},
+      pax = #{pax,jdbcType=VARCHAR},
+      zipcode = #{zipcode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      sortcode = #{sortcode,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      addUser = #{adduser,jdbcType=BIGINT},
+      addUsername = #{addusername,jdbcType=VARCHAR},
+      modiyftime = #{modiyftime,jdbcType=TIMESTAMP},
+      modifyUser = #{modifyuser,jdbcType=BIGINT},
+      modifyUsername = #{modifyusername,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

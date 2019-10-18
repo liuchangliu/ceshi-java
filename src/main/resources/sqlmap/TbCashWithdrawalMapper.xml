@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbCashWithdrawalMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbCashWithdrawal" >
+    <id column="tcw_id" property="tcwId" jdbcType="BIGINT" />
+    <result column="tcw_type" property="tcwType" jdbcType="INTEGER" />
+    <result column="tcw_cash_id" property="tcwCashId" jdbcType="BIGINT" />
+    <result column="tcw_price" property="tcwPrice" jdbcType="DOUBLE" />
+    <result column="tcw_account" property="tcwAccount" jdbcType="VARCHAR" />
+    <result column="tcw_desp" property="tcwDesp" jdbcType="VARCHAR" />
+    <result column="tcw_add_date" property="tcwAddDate" jdbcType="TIMESTAMP" />
+    <result column="tcw_status" property="tcwStatus" jdbcType="INTEGER" />
+    <result column="tcw_check_person" property="tcwCheckPerson" jdbcType="BIGINT" />
+    <result column="tcw_check_time" property="tcwCheckTime" jdbcType="TIMESTAMP" />
+    <result column="tcw_check_desp" property="tcwCheckDesp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tcw_id, tcw_type, tcw_cash_id, tcw_price, tcw_account, tcw_desp, tcw_add_date, tcw_status, 
+    tcw_check_person, tcw_check_time, tcw_check_desp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_cash_withdrawal
+    where tcw_id = #{tcwId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_cash_withdrawal
+    where tcw_id = #{tcwId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbCashWithdrawal" >
+    insert into tb_cash_withdrawal (tcw_id, tcw_type, tcw_cash_id, 
+      tcw_price, tcw_account, tcw_desp, 
+      tcw_add_date, tcw_status, tcw_check_person, 
+      tcw_check_time, tcw_check_desp)
+    values (#{tcwId,jdbcType=BIGINT}, #{tcwType,jdbcType=INTEGER}, #{tcwCashId,jdbcType=BIGINT}, 
+      #{tcwPrice,jdbcType=DOUBLE}, #{tcwAccount,jdbcType=VARCHAR}, #{tcwDesp,jdbcType=VARCHAR}, 
+      #{tcwAddDate,jdbcType=TIMESTAMP}, #{tcwStatus,jdbcType=INTEGER}, #{tcwCheckPerson,jdbcType=BIGINT}, 
+      #{tcwCheckTime,jdbcType=TIMESTAMP}, #{tcwCheckDesp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbCashWithdrawal" >
+    insert into tb_cash_withdrawal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tcwId != null" >
+        tcw_id,
+      </if>
+      <if test="tcwType != null" >
+        tcw_type,
+      </if>
+      <if test="tcwCashId != null" >
+        tcw_cash_id,
+      </if>
+      <if test="tcwPrice != null" >
+        tcw_price,
+      </if>
+      <if test="tcwAccount != null" >
+        tcw_account,
+      </if>
+      <if test="tcwDesp != null" >
+        tcw_desp,
+      </if>
+      <if test="tcwAddDate != null" >
+        tcw_add_date,
+      </if>
+      <if test="tcwStatus != null" >
+        tcw_status,
+      </if>
+      <if test="tcwCheckPerson != null" >
+        tcw_check_person,
+      </if>
+      <if test="tcwCheckTime != null" >
+        tcw_check_time,
+      </if>
+      <if test="tcwCheckDesp != null" >
+        tcw_check_desp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tcwId != null" >
+        #{tcwId,jdbcType=BIGINT},
+      </if>
+      <if test="tcwType != null" >
+        #{tcwType,jdbcType=INTEGER},
+      </if>
+      <if test="tcwCashId != null" >
+        #{tcwCashId,jdbcType=BIGINT},
+      </if>
+      <if test="tcwPrice != null" >
+        #{tcwPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="tcwAccount != null" >
+        #{tcwAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tcwDesp != null" >
+        #{tcwDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tcwAddDate != null" >
+        #{tcwAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tcwStatus != null" >
+        #{tcwStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tcwCheckPerson != null" >
+        #{tcwCheckPerson,jdbcType=BIGINT},
+      </if>
+      <if test="tcwCheckTime != null" >
+        #{tcwCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tcwCheckDesp != null" >
+        #{tcwCheckDesp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbCashWithdrawal" >
+    update tb_cash_withdrawal
+    <set >
+      <if test="tcwType != null" >
+        tcw_type = #{tcwType,jdbcType=INTEGER},
+      </if>
+      <if test="tcwCashId != null" >
+        tcw_cash_id = #{tcwCashId,jdbcType=BIGINT},
+      </if>
+      <if test="tcwPrice != null" >
+        tcw_price = #{tcwPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="tcwAccount != null" >
+        tcw_account = #{tcwAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tcwDesp != null" >
+        tcw_desp = #{tcwDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tcwAddDate != null" >
+        tcw_add_date = #{tcwAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tcwStatus != null" >
+        tcw_status = #{tcwStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tcwCheckPerson != null" >
+        tcw_check_person = #{tcwCheckPerson,jdbcType=BIGINT},
+      </if>
+      <if test="tcwCheckTime != null" >
+        tcw_check_time = #{tcwCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tcwCheckDesp != null" >
+        tcw_check_desp = #{tcwCheckDesp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tcw_id = #{tcwId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbCashWithdrawal" >
+    update tb_cash_withdrawal
+    set tcw_type = #{tcwType,jdbcType=INTEGER},
+      tcw_cash_id = #{tcwCashId,jdbcType=BIGINT},
+      tcw_price = #{tcwPrice,jdbcType=DOUBLE},
+      tcw_account = #{tcwAccount,jdbcType=VARCHAR},
+      tcw_desp = #{tcwDesp,jdbcType=VARCHAR},
+      tcw_add_date = #{tcwAddDate,jdbcType=TIMESTAMP},
+      tcw_status = #{tcwStatus,jdbcType=INTEGER},
+      tcw_check_person = #{tcwCheckPerson,jdbcType=BIGINT},
+      tcw_check_time = #{tcwCheckTime,jdbcType=TIMESTAMP},
+      tcw_check_desp = #{tcwCheckDesp,jdbcType=VARCHAR}
+    where tcw_id = #{tcwId,jdbcType=BIGINT}
+  </update>
+</mapper>

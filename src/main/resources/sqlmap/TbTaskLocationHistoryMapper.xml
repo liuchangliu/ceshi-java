@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbTaskLocationHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbTaskLocationHistory" >
+    <id column="ttlh_id" property="ttlhId" jdbcType="BIGINT" />
+    <result column="ttlh_order_id" property="ttlhOrderId" jdbcType="BIGINT" />
+    <result column="ttlh_driver_id" property="ttlhDriverId" jdbcType="BIGINT" />
+    <result column="ttlh_longtude" property="ttlhLongtude" jdbcType="VARCHAR" />
+    <result column="ttlh_latitude" property="ttlhLatitude" jdbcType="VARCHAR" />
+    <result column="ttlh_add_date" property="ttlhAddDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ttlh_id, ttlh_order_id, ttlh_driver_id, ttlh_longtude, ttlh_latitude, ttlh_add_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_task_location_history
+    where ttlh_id = #{ttlhId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_task_location_history
+    where ttlh_id = #{ttlhId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbTaskLocationHistory" >
+    insert into tb_task_location_history (ttlh_id, ttlh_order_id, ttlh_driver_id, 
+      ttlh_longtude, ttlh_latitude, ttlh_add_date
+      )
+    values (#{ttlhId,jdbcType=BIGINT}, #{ttlhOrderId,jdbcType=BIGINT}, #{ttlhDriverId,jdbcType=BIGINT}, 
+      #{ttlhLongtude,jdbcType=VARCHAR}, #{ttlhLatitude,jdbcType=VARCHAR}, #{ttlhAddDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbTaskLocationHistory" >
+    insert into tb_task_location_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ttlhId != null" >
+        ttlh_id,
+      </if>
+      <if test="ttlhOrderId != null" >
+        ttlh_order_id,
+      </if>
+      <if test="ttlhDriverId != null" >
+        ttlh_driver_id,
+      </if>
+      <if test="ttlhLongtude != null" >
+        ttlh_longtude,
+      </if>
+      <if test="ttlhLatitude != null" >
+        ttlh_latitude,
+      </if>
+      <if test="ttlhAddDate != null" >
+        ttlh_add_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ttlhId != null" >
+        #{ttlhId,jdbcType=BIGINT},
+      </if>
+      <if test="ttlhOrderId != null" >
+        #{ttlhOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="ttlhDriverId != null" >
+        #{ttlhDriverId,jdbcType=BIGINT},
+      </if>
+      <if test="ttlhLongtude != null" >
+        #{ttlhLongtude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttlhLatitude != null" >
+        #{ttlhLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttlhAddDate != null" >
+        #{ttlhAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbTaskLocationHistory" >
+    update tb_task_location_history
+    <set >
+      <if test="ttlhOrderId != null" >
+        ttlh_order_id = #{ttlhOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="ttlhDriverId != null" >
+        ttlh_driver_id = #{ttlhDriverId,jdbcType=BIGINT},
+      </if>
+      <if test="ttlhLongtude != null" >
+        ttlh_longtude = #{ttlhLongtude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttlhLatitude != null" >
+        ttlh_latitude = #{ttlhLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttlhAddDate != null" >
+        ttlh_add_date = #{ttlhAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ttlh_id = #{ttlhId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbTaskLocationHistory" >
+    update tb_task_location_history
+    set ttlh_order_id = #{ttlhOrderId,jdbcType=BIGINT},
+      ttlh_driver_id = #{ttlhDriverId,jdbcType=BIGINT},
+      ttlh_longtude = #{ttlhLongtude,jdbcType=VARCHAR},
+      ttlh_latitude = #{ttlhLatitude,jdbcType=VARCHAR},
+      ttlh_add_date = #{ttlhAddDate,jdbcType=TIMESTAMP}
+    where ttlh_id = #{ttlhId,jdbcType=BIGINT}
+  </update>
+</mapper>

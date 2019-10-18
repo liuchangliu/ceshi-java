@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbShipperMoneyMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbShipperMoney" >
+    <id column="tsm_id" property="tsmId" jdbcType="BIGINT" />
+    <result column="tsm_shipper_id" property="tsmShipperId" jdbcType="BIGINT" />
+    <result column="tsm_type" property="tsmType" jdbcType="INTEGER" />
+    <result column="tsm_amount" property="tsmAmount" jdbcType="DOUBLE" />
+    <result column="tsm_account" property="tsmAccount" jdbcType="VARCHAR" />
+    <result column="tsm_mode" property="tsmMode" jdbcType="INTEGER" />
+    <result column="tsm_bank_number" property="tsmBankNumber" jdbcType="VARCHAR" />
+    <result column="tsm_transport_id" property="tsmTransportId" jdbcType="BIGINT" />
+    <result column="tsm_desc" property="tsmDesc" jdbcType="VARCHAR" />
+    <result column="tsm_add_date" property="tsmAddDate" jdbcType="TIMESTAMP" />
+    <result column="tsm_status" property="tsmStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsm_id, tsm_shipper_id, tsm_type, tsm_amount, tsm_account, tsm_mode, tsm_bank_number, 
+    tsm_transport_id, tsm_desc, tsm_add_date, tsm_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shipper_money
+    where tsm_id = #{tsmId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shipper_money
+    where tsm_id = #{tsmId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbShipperMoney" >
+    insert into tb_shipper_money (tsm_id, tsm_shipper_id, tsm_type, 
+      tsm_amount, tsm_account, tsm_mode, 
+      tsm_bank_number, tsm_transport_id, tsm_desc, 
+      tsm_add_date, tsm_status)
+    values (#{tsmId,jdbcType=BIGINT}, #{tsmShipperId,jdbcType=BIGINT}, #{tsmType,jdbcType=INTEGER}, 
+      #{tsmAmount,jdbcType=DOUBLE}, #{tsmAccount,jdbcType=VARCHAR}, #{tsmMode,jdbcType=INTEGER}, 
+      #{tsmBankNumber,jdbcType=VARCHAR}, #{tsmTransportId,jdbcType=BIGINT}, #{tsmDesc,jdbcType=VARCHAR}, 
+      #{tsmAddDate,jdbcType=TIMESTAMP}, #{tsmStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbShipperMoney" >
+    insert into tb_shipper_money
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsmId != null" >
+        tsm_id,
+      </if>
+      <if test="tsmShipperId != null" >
+        tsm_shipper_id,
+      </if>
+      <if test="tsmType != null" >
+        tsm_type,
+      </if>
+      <if test="tsmAmount != null" >
+        tsm_amount,
+      </if>
+      <if test="tsmAccount != null" >
+        tsm_account,
+      </if>
+      <if test="tsmMode != null" >
+        tsm_mode,
+      </if>
+      <if test="tsmBankNumber != null" >
+        tsm_bank_number,
+      </if>
+      <if test="tsmTransportId != null" >
+        tsm_transport_id,
+      </if>
+      <if test="tsmDesc != null" >
+        tsm_desc,
+      </if>
+      <if test="tsmAddDate != null" >
+        tsm_add_date,
+      </if>
+      <if test="tsmStatus != null" >
+        tsm_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsmId != null" >
+        #{tsmId,jdbcType=BIGINT},
+      </if>
+      <if test="tsmShipperId != null" >
+        #{tsmShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsmType != null" >
+        #{tsmType,jdbcType=INTEGER},
+      </if>
+      <if test="tsmAmount != null" >
+        #{tsmAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsmAccount != null" >
+        #{tsmAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsmMode != null" >
+        #{tsmMode,jdbcType=INTEGER},
+      </if>
+      <if test="tsmBankNumber != null" >
+        #{tsmBankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsmTransportId != null" >
+        #{tsmTransportId,jdbcType=BIGINT},
+      </if>
+      <if test="tsmDesc != null" >
+        #{tsmDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tsmAddDate != null" >
+        #{tsmAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsmStatus != null" >
+        #{tsmStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbShipperMoney" >
+    update tb_shipper_money
+    <set >
+      <if test="tsmShipperId != null" >
+        tsm_shipper_id = #{tsmShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsmType != null" >
+        tsm_type = #{tsmType,jdbcType=INTEGER},
+      </if>
+      <if test="tsmAmount != null" >
+        tsm_amount = #{tsmAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tsmAccount != null" >
+        tsm_account = #{tsmAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsmMode != null" >
+        tsm_mode = #{tsmMode,jdbcType=INTEGER},
+      </if>
+      <if test="tsmBankNumber != null" >
+        tsm_bank_number = #{tsmBankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsmTransportId != null" >
+        tsm_transport_id = #{tsmTransportId,jdbcType=BIGINT},
+      </if>
+      <if test="tsmDesc != null" >
+        tsm_desc = #{tsmDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tsmAddDate != null" >
+        tsm_add_date = #{tsmAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsmStatus != null" >
+        tsm_status = #{tsmStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tsm_id = #{tsmId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbShipperMoney" >
+    update tb_shipper_money
+    set tsm_shipper_id = #{tsmShipperId,jdbcType=BIGINT},
+      tsm_type = #{tsmType,jdbcType=INTEGER},
+      tsm_amount = #{tsmAmount,jdbcType=DOUBLE},
+      tsm_account = #{tsmAccount,jdbcType=VARCHAR},
+      tsm_mode = #{tsmMode,jdbcType=INTEGER},
+      tsm_bank_number = #{tsmBankNumber,jdbcType=VARCHAR},
+      tsm_transport_id = #{tsmTransportId,jdbcType=BIGINT},
+      tsm_desc = #{tsmDesc,jdbcType=VARCHAR},
+      tsm_add_date = #{tsmAddDate,jdbcType=TIMESTAMP},
+      tsm_status = #{tsmStatus,jdbcType=INTEGER}
+    where tsm_id = #{tsmId,jdbcType=BIGINT}
+  </update>
+</mapper>

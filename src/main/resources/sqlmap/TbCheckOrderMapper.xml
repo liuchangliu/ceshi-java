@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbCheckOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbCheckOrder" >
+    <id column="tco_id" property="tcoId" jdbcType="BIGINT" />
+    <result column="tco_shipper_id" property="tcoShipperId" jdbcType="BIGINT" />
+    <result column="tco_transport_id" property="tcoTransportId" jdbcType="VARCHAR" />
+    <result column="tco_transport_num" property="tcoTransportNum" jdbcType="INTEGER" />
+    <result column="tco_total_money" property="tcoTotalMoney" jdbcType="DOUBLE" />
+    <result column="tco_oil_gas_discount" property="tcoOilGasDiscount" jdbcType="DOUBLE" />
+    <result column="tco_invoice_money" property="tcoInvoiceMoney" jdbcType="DOUBLE" />
+    <result column="tco_invoice_service_money" property="tcoInvoiceServiceMoney" jdbcType="DOUBLE" />
+    <result column="tco_prov_id" property="tcoProvId" jdbcType="BIGINT" />
+    <result column="tco_city_id" property="tcoCityId" jdbcType="BIGINT" />
+    <result column="tco_region_id" property="tcoRegionId" jdbcType="BIGINT" />
+    <result column="tco_addresss" property="tcoAddresss" jdbcType="VARCHAR" />
+    <result column="tco_desc" property="tcoDesc" jdbcType="VARCHAR" />
+    <result column="tco_state" property="tcoState" jdbcType="INTEGER" />
+    <result column="tco_add_date" property="tcoAddDate" jdbcType="TIMESTAMP" />
+    <result column="tco_refuse_reason" property="tcoRefuseReason" jdbcType="VARCHAR" />
+    <result column="tco_number" property="tcoNumber" jdbcType="VARCHAR" />
+    <result column="tco_receive_person" property="tcoReceivePerson" jdbcType="VARCHAR" />
+    <result column="tco_phone" property="tcoPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tco_id, tco_shipper_id, tco_transport_id, tco_transport_num, tco_total_money, tco_oil_gas_discount, 
+    tco_invoice_money, tco_invoice_service_money, tco_prov_id, tco_city_id, tco_region_id, 
+    tco_addresss, tco_desc, tco_state, tco_add_date, tco_refuse_reason, tco_number, tco_receive_person, 
+    tco_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_check_order
+    where tco_id = #{tcoId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_check_order
+    where tco_id = #{tcoId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbCheckOrder" >
+    insert into tb_check_order (tco_id, tco_shipper_id, tco_transport_id, 
+      tco_transport_num, tco_total_money, tco_oil_gas_discount, 
+      tco_invoice_money, tco_invoice_service_money, 
+      tco_prov_id, tco_city_id, tco_region_id, 
+      tco_addresss, tco_desc, tco_state, 
+      tco_add_date, tco_refuse_reason, tco_number, 
+      tco_receive_person, tco_phone)
+    values (#{tcoId,jdbcType=BIGINT}, #{tcoShipperId,jdbcType=BIGINT}, #{tcoTransportId,jdbcType=VARCHAR}, 
+      #{tcoTransportNum,jdbcType=INTEGER}, #{tcoTotalMoney,jdbcType=DOUBLE}, #{tcoOilGasDiscount,jdbcType=DOUBLE}, 
+      #{tcoInvoiceMoney,jdbcType=DOUBLE}, #{tcoInvoiceServiceMoney,jdbcType=DOUBLE}, 
+      #{tcoProvId,jdbcType=BIGINT}, #{tcoCityId,jdbcType=BIGINT}, #{tcoRegionId,jdbcType=BIGINT}, 
+      #{tcoAddresss,jdbcType=VARCHAR}, #{tcoDesc,jdbcType=VARCHAR}, #{tcoState,jdbcType=INTEGER}, 
+      #{tcoAddDate,jdbcType=TIMESTAMP}, #{tcoRefuseReason,jdbcType=VARCHAR}, #{tcoNumber,jdbcType=VARCHAR}, 
+      #{tcoReceivePerson,jdbcType=VARCHAR}, #{tcoPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbCheckOrder" >
+    insert into tb_check_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tcoId != null" >
+        tco_id,
+      </if>
+      <if test="tcoShipperId != null" >
+        tco_shipper_id,
+      </if>
+      <if test="tcoTransportId != null" >
+        tco_transport_id,
+      </if>
+      <if test="tcoTransportNum != null" >
+        tco_transport_num,
+      </if>
+      <if test="tcoTotalMoney != null" >
+        tco_total_money,
+      </if>
+      <if test="tcoOilGasDiscount != null" >
+        tco_oil_gas_discount,
+      </if>
+      <if test="tcoInvoiceMoney != null" >
+        tco_invoice_money,
+      </if>
+      <if test="tcoInvoiceServiceMoney != null" >
+        tco_invoice_service_money,
+      </if>
+      <if test="tcoProvId != null" >
+        tco_prov_id,
+      </if>
+      <if test="tcoCityId != null" >
+        tco_city_id,
+      </if>
+      <if test="tcoRegionId != null" >
+        tco_region_id,
+      </if>
+      <if test="tcoAddresss != null" >
+        tco_addresss,
+      </if>
+      <if test="tcoDesc != null" >
+        tco_desc,
+      </if>
+      <if test="tcoState != null" >
+        tco_state,
+      </if>
+      <if test="tcoAddDate != null" >
+        tco_add_date,
+      </if>
+      <if test="tcoRefuseReason != null" >
+        tco_refuse_reason,
+      </if>
+      <if test="tcoNumber != null" >
+        tco_number,
+      </if>
+      <if test="tcoReceivePerson != null" >
+        tco_receive_person,
+      </if>
+      <if test="tcoPhone != null" >
+        tco_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tcoId != null" >
+        #{tcoId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoShipperId != null" >
+        #{tcoShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoTransportId != null" >
+        #{tcoTransportId,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoTransportNum != null" >
+        #{tcoTransportNum,jdbcType=INTEGER},
+      </if>
+      <if test="tcoTotalMoney != null" >
+        #{tcoTotalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoOilGasDiscount != null" >
+        #{tcoOilGasDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoInvoiceMoney != null" >
+        #{tcoInvoiceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoInvoiceServiceMoney != null" >
+        #{tcoInvoiceServiceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoProvId != null" >
+        #{tcoProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoCityId != null" >
+        #{tcoCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoRegionId != null" >
+        #{tcoRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoAddresss != null" >
+        #{tcoAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoDesc != null" >
+        #{tcoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoState != null" >
+        #{tcoState,jdbcType=INTEGER},
+      </if>
+      <if test="tcoAddDate != null" >
+        #{tcoAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tcoRefuseReason != null" >
+        #{tcoRefuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoNumber != null" >
+        #{tcoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoReceivePerson != null" >
+        #{tcoReceivePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoPhone != null" >
+        #{tcoPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbCheckOrder" >
+    update tb_check_order
+    <set >
+      <if test="tcoShipperId != null" >
+        tco_shipper_id = #{tcoShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoTransportId != null" >
+        tco_transport_id = #{tcoTransportId,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoTransportNum != null" >
+        tco_transport_num = #{tcoTransportNum,jdbcType=INTEGER},
+      </if>
+      <if test="tcoTotalMoney != null" >
+        tco_total_money = #{tcoTotalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoOilGasDiscount != null" >
+        tco_oil_gas_discount = #{tcoOilGasDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoInvoiceMoney != null" >
+        tco_invoice_money = #{tcoInvoiceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoInvoiceServiceMoney != null" >
+        tco_invoice_service_money = #{tcoInvoiceServiceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tcoProvId != null" >
+        tco_prov_id = #{tcoProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoCityId != null" >
+        tco_city_id = #{tcoCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoRegionId != null" >
+        tco_region_id = #{tcoRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tcoAddresss != null" >
+        tco_addresss = #{tcoAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoDesc != null" >
+        tco_desc = #{tcoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoState != null" >
+        tco_state = #{tcoState,jdbcType=INTEGER},
+      </if>
+      <if test="tcoAddDate != null" >
+        tco_add_date = #{tcoAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tcoRefuseReason != null" >
+        tco_refuse_reason = #{tcoRefuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoNumber != null" >
+        tco_number = #{tcoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoReceivePerson != null" >
+        tco_receive_person = #{tcoReceivePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tcoPhone != null" >
+        tco_phone = #{tcoPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tco_id = #{tcoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbCheckOrder" >
+    update tb_check_order
+    set tco_shipper_id = #{tcoShipperId,jdbcType=BIGINT},
+      tco_transport_id = #{tcoTransportId,jdbcType=VARCHAR},
+      tco_transport_num = #{tcoTransportNum,jdbcType=INTEGER},
+      tco_total_money = #{tcoTotalMoney,jdbcType=DOUBLE},
+      tco_oil_gas_discount = #{tcoOilGasDiscount,jdbcType=DOUBLE},
+      tco_invoice_money = #{tcoInvoiceMoney,jdbcType=DOUBLE},
+      tco_invoice_service_money = #{tcoInvoiceServiceMoney,jdbcType=DOUBLE},
+      tco_prov_id = #{tcoProvId,jdbcType=BIGINT},
+      tco_city_id = #{tcoCityId,jdbcType=BIGINT},
+      tco_region_id = #{tcoRegionId,jdbcType=BIGINT},
+      tco_addresss = #{tcoAddresss,jdbcType=VARCHAR},
+      tco_desc = #{tcoDesc,jdbcType=VARCHAR},
+      tco_state = #{tcoState,jdbcType=INTEGER},
+      tco_add_date = #{tcoAddDate,jdbcType=TIMESTAMP},
+      tco_refuse_reason = #{tcoRefuseReason,jdbcType=VARCHAR},
+      tco_number = #{tcoNumber,jdbcType=VARCHAR},
+      tco_receive_person = #{tcoReceivePerson,jdbcType=VARCHAR},
+      tco_phone = #{tcoPhone,jdbcType=VARCHAR}
+    where tco_id = #{tcoId,jdbcType=BIGINT}
+  </update>
+</mapper>

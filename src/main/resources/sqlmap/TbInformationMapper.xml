@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbInformationMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbInformation" >
+    <id column="ti_id" property="tiId" jdbcType="BIGINT" />
+    <result column="ti_cata_id" property="tiCataId" jdbcType="BIGINT" />
+    <result column="ti_title" property="tiTitle" jdbcType="VARCHAR" />
+    <result column="ti_view_count" property="tiViewCount" jdbcType="INTEGER" />
+    <result column="ti_add_date" property="tiAddDate" jdbcType="TIMESTAMP" />
+    <result column="ti_status" property="tiStatus" jdbcType="INTEGER" />
+    <result column="ti_partion" property="tiPartion" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.springboot.entity.TbInformation" extends="BaseResultMap" >
+    <result column="ti_content" property="tiContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ti_id, ti_cata_id, ti_title, ti_view_count, ti_add_date, ti_status, ti_partion
+  </sql>
+  <sql id="Blob_Column_List" >
+    ti_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_information
+    where ti_id = #{tiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_information
+    where ti_id = #{tiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbInformation" >
+    insert into tb_information (ti_id, ti_cata_id, ti_title, 
+      ti_view_count, ti_add_date, ti_status, 
+      ti_partion, ti_content)
+    values (#{tiId,jdbcType=BIGINT}, #{tiCataId,jdbcType=BIGINT}, #{tiTitle,jdbcType=VARCHAR}, 
+      #{tiViewCount,jdbcType=INTEGER}, #{tiAddDate,jdbcType=TIMESTAMP}, #{tiStatus,jdbcType=INTEGER}, 
+      #{tiPartion,jdbcType=BIGINT}, #{tiContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbInformation" >
+    insert into tb_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tiId != null" >
+        ti_id,
+      </if>
+      <if test="tiCataId != null" >
+        ti_cata_id,
+      </if>
+      <if test="tiTitle != null" >
+        ti_title,
+      </if>
+      <if test="tiViewCount != null" >
+        ti_view_count,
+      </if>
+      <if test="tiAddDate != null" >
+        ti_add_date,
+      </if>
+      <if test="tiStatus != null" >
+        ti_status,
+      </if>
+      <if test="tiPartion != null" >
+        ti_partion,
+      </if>
+      <if test="tiContent != null" >
+        ti_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tiId != null" >
+        #{tiId,jdbcType=BIGINT},
+      </if>
+      <if test="tiCataId != null" >
+        #{tiCataId,jdbcType=BIGINT},
+      </if>
+      <if test="tiTitle != null" >
+        #{tiTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="tiViewCount != null" >
+        #{tiViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="tiAddDate != null" >
+        #{tiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tiStatus != null" >
+        #{tiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tiPartion != null" >
+        #{tiPartion,jdbcType=BIGINT},
+      </if>
+      <if test="tiContent != null" >
+        #{tiContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbInformation" >
+    update tb_information
+    <set >
+      <if test="tiCataId != null" >
+        ti_cata_id = #{tiCataId,jdbcType=BIGINT},
+      </if>
+      <if test="tiTitle != null" >
+        ti_title = #{tiTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="tiViewCount != null" >
+        ti_view_count = #{tiViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="tiAddDate != null" >
+        ti_add_date = #{tiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tiStatus != null" >
+        ti_status = #{tiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tiPartion != null" >
+        ti_partion = #{tiPartion,jdbcType=BIGINT},
+      </if>
+      <if test="tiContent != null" >
+        ti_content = #{tiContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ti_id = #{tiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.springboot.entity.TbInformation" >
+    update tb_information
+    set ti_cata_id = #{tiCataId,jdbcType=BIGINT},
+      ti_title = #{tiTitle,jdbcType=VARCHAR},
+      ti_view_count = #{tiViewCount,jdbcType=INTEGER},
+      ti_add_date = #{tiAddDate,jdbcType=TIMESTAMP},
+      ti_status = #{tiStatus,jdbcType=INTEGER},
+      ti_partion = #{tiPartion,jdbcType=BIGINT},
+      ti_content = #{tiContent,jdbcType=LONGVARCHAR}
+    where ti_id = #{tiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbInformation" >
+    update tb_information
+    set ti_cata_id = #{tiCataId,jdbcType=BIGINT},
+      ti_title = #{tiTitle,jdbcType=VARCHAR},
+      ti_view_count = #{tiViewCount,jdbcType=INTEGER},
+      ti_add_date = #{tiAddDate,jdbcType=TIMESTAMP},
+      ti_status = #{tiStatus,jdbcType=INTEGER},
+      ti_partion = #{tiPartion,jdbcType=BIGINT}
+    where ti_id = #{tiId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbSystemBankInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbSystemBankInfo" >
+    <id column="tsbi_id" property="tsbiId" jdbcType="BIGINT" />
+    <result column="tsbi_name" property="tsbiName" jdbcType="VARCHAR" />
+    <result column="tsbi_simple_name" property="tsbiSimpleName" jdbcType="VARCHAR" />
+    <result column="tsbi_add_date" property="tsbiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tsbi_status" property="tsbiStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsbi_id, tsbi_name, tsbi_simple_name, tsbi_add_date, tsbi_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_system_bank_info
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_system_bank_info
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbSystemBankInfo" >
+    insert into tb_system_bank_info (tsbi_id, tsbi_name, tsbi_simple_name, 
+      tsbi_add_date, tsbi_status)
+    values (#{tsbiId,jdbcType=BIGINT}, #{tsbiName,jdbcType=VARCHAR}, #{tsbiSimpleName,jdbcType=VARCHAR}, 
+      #{tsbiAddDate,jdbcType=TIMESTAMP}, #{tsbiStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbSystemBankInfo" >
+    insert into tb_system_bank_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsbiId != null" >
+        tsbi_id,
+      </if>
+      <if test="tsbiName != null" >
+        tsbi_name,
+      </if>
+      <if test="tsbiSimpleName != null" >
+        tsbi_simple_name,
+      </if>
+      <if test="tsbiAddDate != null" >
+        tsbi_add_date,
+      </if>
+      <if test="tsbiStatus != null" >
+        tsbi_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsbiId != null" >
+        #{tsbiId,jdbcType=BIGINT},
+      </if>
+      <if test="tsbiName != null" >
+        #{tsbiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiSimpleName != null" >
+        #{tsbiSimpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiAddDate != null" >
+        #{tsbiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsbiStatus != null" >
+        #{tsbiStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbSystemBankInfo" >
+    update tb_system_bank_info
+    <set >
+      <if test="tsbiName != null" >
+        tsbi_name = #{tsbiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiSimpleName != null" >
+        tsbi_simple_name = #{tsbiSimpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiAddDate != null" >
+        tsbi_add_date = #{tsbiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsbiStatus != null" >
+        tsbi_status = #{tsbiStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbSystemBankInfo" >
+    update tb_system_bank_info
+    set tsbi_name = #{tsbiName,jdbcType=VARCHAR},
+      tsbi_simple_name = #{tsbiSimpleName,jdbcType=VARCHAR},
+      tsbi_add_date = #{tsbiAddDate,jdbcType=TIMESTAMP},
+      tsbi_status = #{tsbiStatus,jdbcType=INTEGER}
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </update>
+</mapper>

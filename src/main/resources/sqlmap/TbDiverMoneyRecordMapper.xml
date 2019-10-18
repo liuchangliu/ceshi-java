@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbDiverMoneyRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbDiverMoneyRecord" >
+    <id column="tdmr_id" property="tdmrId" jdbcType="BIGINT" />
+    <result column="tdmr_diver_id" property="tdmrDiverId" jdbcType="BIGINT" />
+    <result column="tdmr_type" property="tdmrType" jdbcType="INTEGER" />
+    <result column="tdmr_amount" property="tdmrAmount" jdbcType="DOUBLE" />
+    <result column="tdmr_account" property="tdmrAccount" jdbcType="VARCHAR" />
+    <result column="tdmr_transport_id" property="tdmrTransportId" jdbcType="BIGINT" />
+    <result column="tdmr_add_date" property="tdmrAddDate" jdbcType="TIMESTAMP" />
+    <result column="tdmr_memo" property="tdmrMemo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tdmr_id, tdmr_diver_id, tdmr_type, tdmr_amount, tdmr_account, tdmr_transport_id, 
+    tdmr_add_date, tdmr_memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_diver_money_record
+    where tdmr_id = #{tdmrId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_diver_money_record
+    where tdmr_id = #{tdmrId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbDiverMoneyRecord" >
+    insert into tb_diver_money_record (tdmr_id, tdmr_diver_id, tdmr_type, 
+      tdmr_amount, tdmr_account, tdmr_transport_id, 
+      tdmr_add_date, tdmr_memo)
+    values (#{tdmrId,jdbcType=BIGINT}, #{tdmrDiverId,jdbcType=BIGINT}, #{tdmrType,jdbcType=INTEGER}, 
+      #{tdmrAmount,jdbcType=DOUBLE}, #{tdmrAccount,jdbcType=VARCHAR}, #{tdmrTransportId,jdbcType=BIGINT}, 
+      #{tdmrAddDate,jdbcType=TIMESTAMP}, #{tdmrMemo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbDiverMoneyRecord" >
+    insert into tb_diver_money_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tdmrId != null" >
+        tdmr_id,
+      </if>
+      <if test="tdmrDiverId != null" >
+        tdmr_diver_id,
+      </if>
+      <if test="tdmrType != null" >
+        tdmr_type,
+      </if>
+      <if test="tdmrAmount != null" >
+        tdmr_amount,
+      </if>
+      <if test="tdmrAccount != null" >
+        tdmr_account,
+      </if>
+      <if test="tdmrTransportId != null" >
+        tdmr_transport_id,
+      </if>
+      <if test="tdmrAddDate != null" >
+        tdmr_add_date,
+      </if>
+      <if test="tdmrMemo != null" >
+        tdmr_memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tdmrId != null" >
+        #{tdmrId,jdbcType=BIGINT},
+      </if>
+      <if test="tdmrDiverId != null" >
+        #{tdmrDiverId,jdbcType=BIGINT},
+      </if>
+      <if test="tdmrType != null" >
+        #{tdmrType,jdbcType=INTEGER},
+      </if>
+      <if test="tdmrAmount != null" >
+        #{tdmrAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdmrAccount != null" >
+        #{tdmrAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tdmrTransportId != null" >
+        #{tdmrTransportId,jdbcType=BIGINT},
+      </if>
+      <if test="tdmrAddDate != null" >
+        #{tdmrAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tdmrMemo != null" >
+        #{tdmrMemo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbDiverMoneyRecord" >
+    update tb_diver_money_record
+    <set >
+      <if test="tdmrDiverId != null" >
+        tdmr_diver_id = #{tdmrDiverId,jdbcType=BIGINT},
+      </if>
+      <if test="tdmrType != null" >
+        tdmr_type = #{tdmrType,jdbcType=INTEGER},
+      </if>
+      <if test="tdmrAmount != null" >
+        tdmr_amount = #{tdmrAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tdmrAccount != null" >
+        tdmr_account = #{tdmrAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tdmrTransportId != null" >
+        tdmr_transport_id = #{tdmrTransportId,jdbcType=BIGINT},
+      </if>
+      <if test="tdmrAddDate != null" >
+        tdmr_add_date = #{tdmrAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tdmrMemo != null" >
+        tdmr_memo = #{tdmrMemo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tdmr_id = #{tdmrId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbDiverMoneyRecord" >
+    update tb_diver_money_record
+    set tdmr_diver_id = #{tdmrDiverId,jdbcType=BIGINT},
+      tdmr_type = #{tdmrType,jdbcType=INTEGER},
+      tdmr_amount = #{tdmrAmount,jdbcType=DOUBLE},
+      tdmr_account = #{tdmrAccount,jdbcType=VARCHAR},
+      tdmr_transport_id = #{tdmrTransportId,jdbcType=BIGINT},
+      tdmr_add_date = #{tdmrAddDate,jdbcType=TIMESTAMP},
+      tdmr_memo = #{tdmrMemo,jdbcType=VARCHAR}
+    where tdmr_id = #{tdmrId,jdbcType=BIGINT}
+  </update>
+</mapper>

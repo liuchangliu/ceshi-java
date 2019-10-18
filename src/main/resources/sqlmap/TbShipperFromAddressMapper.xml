@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbShipperFromAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbShipperFromAddress" >
+    <id column="tsfa_id" property="tsfaId" jdbcType="BIGINT" />
+    <result column="tsfa_shipper_id" property="tsfaShipperId" jdbcType="BIGINT" />
+    <result column="tsfa_prov_id" property="tsfaProvId" jdbcType="BIGINT" />
+    <result column="tsfa_city_id" property="tsfaCityId" jdbcType="BIGINT" />
+    <result column="tsfa_region_id" property="tsfaRegionId" jdbcType="BIGINT" />
+    <result column="tsfa_addresss" property="tsfaAddresss" jdbcType="VARCHAR" />
+    <result column="tsfa_longitude" property="tsfaLongitude" jdbcType="VARCHAR" />
+    <result column="tsfa_latitude" property="tsfaLatitude" jdbcType="VARCHAR" />
+    <result column="tsfa_label" property="tsfaLabel" jdbcType="VARCHAR" />
+    <result column="tsfa_add_date" property="tsfaAddDate" jdbcType="TIMESTAMP" />
+    <result column="tsfa_status" property="tsfaStatus" jdbcType="INTEGER" />
+    <result column="tsfa_contact_person" property="tsfaContactPerson" jdbcType="VARCHAR" />
+    <result column="tsfa_contact_phone" property="tsfaContactPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsfa_id, tsfa_shipper_id, tsfa_prov_id, tsfa_city_id, tsfa_region_id, tsfa_addresss, 
+    tsfa_longitude, tsfa_latitude, tsfa_label, tsfa_add_date, tsfa_status, tsfa_contact_person, 
+    tsfa_contact_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shipper_from_address
+    where tsfa_id = #{tsfaId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shipper_from_address
+    where tsfa_id = #{tsfaId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbShipperFromAddress" >
+    insert into tb_shipper_from_address (tsfa_id, tsfa_shipper_id, tsfa_prov_id, 
+      tsfa_city_id, tsfa_region_id, tsfa_addresss, 
+      tsfa_longitude, tsfa_latitude, tsfa_label, 
+      tsfa_add_date, tsfa_status, tsfa_contact_person, 
+      tsfa_contact_phone)
+    values (#{tsfaId,jdbcType=BIGINT}, #{tsfaShipperId,jdbcType=BIGINT}, #{tsfaProvId,jdbcType=BIGINT}, 
+      #{tsfaCityId,jdbcType=BIGINT}, #{tsfaRegionId,jdbcType=BIGINT}, #{tsfaAddresss,jdbcType=VARCHAR}, 
+      #{tsfaLongitude,jdbcType=VARCHAR}, #{tsfaLatitude,jdbcType=VARCHAR}, #{tsfaLabel,jdbcType=VARCHAR}, 
+      #{tsfaAddDate,jdbcType=TIMESTAMP}, #{tsfaStatus,jdbcType=INTEGER}, #{tsfaContactPerson,jdbcType=VARCHAR}, 
+      #{tsfaContactPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbShipperFromAddress" >
+    insert into tb_shipper_from_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsfaId != null" >
+        tsfa_id,
+      </if>
+      <if test="tsfaShipperId != null" >
+        tsfa_shipper_id,
+      </if>
+      <if test="tsfaProvId != null" >
+        tsfa_prov_id,
+      </if>
+      <if test="tsfaCityId != null" >
+        tsfa_city_id,
+      </if>
+      <if test="tsfaRegionId != null" >
+        tsfa_region_id,
+      </if>
+      <if test="tsfaAddresss != null" >
+        tsfa_addresss,
+      </if>
+      <if test="tsfaLongitude != null" >
+        tsfa_longitude,
+      </if>
+      <if test="tsfaLatitude != null" >
+        tsfa_latitude,
+      </if>
+      <if test="tsfaLabel != null" >
+        tsfa_label,
+      </if>
+      <if test="tsfaAddDate != null" >
+        tsfa_add_date,
+      </if>
+      <if test="tsfaStatus != null" >
+        tsfa_status,
+      </if>
+      <if test="tsfaContactPerson != null" >
+        tsfa_contact_person,
+      </if>
+      <if test="tsfaContactPhone != null" >
+        tsfa_contact_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsfaId != null" >
+        #{tsfaId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaShipperId != null" >
+        #{tsfaShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaProvId != null" >
+        #{tsfaProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaCityId != null" >
+        #{tsfaCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaRegionId != null" >
+        #{tsfaRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaAddresss != null" >
+        #{tsfaAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaLongitude != null" >
+        #{tsfaLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaLatitude != null" >
+        #{tsfaLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaLabel != null" >
+        #{tsfaLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaAddDate != null" >
+        #{tsfaAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsfaStatus != null" >
+        #{tsfaStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsfaContactPerson != null" >
+        #{tsfaContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaContactPhone != null" >
+        #{tsfaContactPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbShipperFromAddress" >
+    update tb_shipper_from_address
+    <set >
+      <if test="tsfaShipperId != null" >
+        tsfa_shipper_id = #{tsfaShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaProvId != null" >
+        tsfa_prov_id = #{tsfaProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaCityId != null" >
+        tsfa_city_id = #{tsfaCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaRegionId != null" >
+        tsfa_region_id = #{tsfaRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tsfaAddresss != null" >
+        tsfa_addresss = #{tsfaAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaLongitude != null" >
+        tsfa_longitude = #{tsfaLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaLatitude != null" >
+        tsfa_latitude = #{tsfaLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaLabel != null" >
+        tsfa_label = #{tsfaLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaAddDate != null" >
+        tsfa_add_date = #{tsfaAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsfaStatus != null" >
+        tsfa_status = #{tsfaStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsfaContactPerson != null" >
+        tsfa_contact_person = #{tsfaContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaContactPhone != null" >
+        tsfa_contact_phone = #{tsfaContactPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsfa_id = #{tsfaId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbShipperFromAddress" >
+    update tb_shipper_from_address
+    set tsfa_shipper_id = #{tsfaShipperId,jdbcType=BIGINT},
+      tsfa_prov_id = #{tsfaProvId,jdbcType=BIGINT},
+      tsfa_city_id = #{tsfaCityId,jdbcType=BIGINT},
+      tsfa_region_id = #{tsfaRegionId,jdbcType=BIGINT},
+      tsfa_addresss = #{tsfaAddresss,jdbcType=VARCHAR},
+      tsfa_longitude = #{tsfaLongitude,jdbcType=VARCHAR},
+      tsfa_latitude = #{tsfaLatitude,jdbcType=VARCHAR},
+      tsfa_label = #{tsfaLabel,jdbcType=VARCHAR},
+      tsfa_add_date = #{tsfaAddDate,jdbcType=TIMESTAMP},
+      tsfa_status = #{tsfaStatus,jdbcType=INTEGER},
+      tsfa_contact_person = #{tsfaContactPerson,jdbcType=VARCHAR},
+      tsfa_contact_phone = #{tsfaContactPhone,jdbcType=VARCHAR}
+    where tsfa_id = #{tsfaId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.RolesMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Roles" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="restriction" property="restriction" jdbcType="VARCHAR" />
+    <result column="sortCode" property="sortcode" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="allowEdit" property="allowedit" jdbcType="INTEGER" />
+    <result column="allowDelete" property="allowdelete" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="addUserId" property="adduserid" jdbcType="BIGINT" />
+    <result column="addUsername" property="addusername" jdbcType="VARCHAR" />
+    <result column="modifytime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="modifyUserId" property="modifyuserid" jdbcType="BIGINT" />
+    <result column="modifyUsername" property="modifyusername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parentId, name, restriction, sortCode, remark, allowEdit, allowDelete, status, 
+    addtime, addUserId, addUsername, modifytime, modifyUserId, modifyUsername
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from roles
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from roles
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.Roles" >
+    insert into roles (id, parentId, name, 
+      restriction, sortCode, remark, 
+      allowEdit, allowDelete, status, 
+      addtime, addUserId, addUsername, 
+      modifytime, modifyUserId, modifyUsername
+      )
+    values (#{id,jdbcType=INTEGER}, #{parentid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{restriction,jdbcType=VARCHAR}, #{sortcode,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{allowedit,jdbcType=INTEGER}, #{allowdelete,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{addtime,jdbcType=TIMESTAMP}, #{adduserid,jdbcType=BIGINT}, #{addusername,jdbcType=VARCHAR}, 
+      #{modifytime,jdbcType=TIMESTAMP}, #{modifyuserid,jdbcType=BIGINT}, #{modifyusername,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.Roles" >
+    insert into roles
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="restriction != null" >
+        restriction,
+      </if>
+      <if test="sortcode != null" >
+        sortCode,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="allowedit != null" >
+        allowEdit,
+      </if>
+      <if test="allowdelete != null" >
+        allowDelete,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="adduserid != null" >
+        addUserId,
+      </if>
+      <if test="addusername != null" >
+        addUsername,
+      </if>
+      <if test="modifytime != null" >
+        modifytime,
+      </if>
+      <if test="modifyuserid != null" >
+        modifyUserId,
+      </if>
+      <if test="modifyusername != null" >
+        modifyUsername,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="restriction != null" >
+        #{restriction,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        #{sortcode,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="allowedit != null" >
+        #{allowedit,jdbcType=INTEGER},
+      </if>
+      <if test="allowdelete != null" >
+        #{allowdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        #{addusername,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuserid != null" >
+        #{modifyuserid,jdbcType=BIGINT},
+      </if>
+      <if test="modifyusername != null" >
+        #{modifyusername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Roles" >
+    update roles
+    <set >
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="restriction != null" >
+        restriction = #{restriction,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        sortCode = #{sortcode,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="allowedit != null" >
+        allowEdit = #{allowedit,jdbcType=INTEGER},
+      </if>
+      <if test="allowdelete != null" >
+        allowDelete = #{allowdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        addUserId = #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        addUsername = #{addusername,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null" >
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuserid != null" >
+        modifyUserId = #{modifyuserid,jdbcType=BIGINT},
+      </if>
+      <if test="modifyusername != null" >
+        modifyUsername = #{modifyusername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Roles" >
+    update roles
+    set parentId = #{parentid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      restriction = #{restriction,jdbcType=VARCHAR},
+      sortCode = #{sortcode,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      allowEdit = #{allowedit,jdbcType=INTEGER},
+      allowDelete = #{allowdelete,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      addUserId = #{adduserid,jdbcType=BIGINT},
+      addUsername = #{addusername,jdbcType=VARCHAR},
+      modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      modifyUserId = #{modifyuserid,jdbcType=BIGINT},
+      modifyUsername = #{modifyusername,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

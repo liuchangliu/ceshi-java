@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbShipperToAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbShipperToAddress" >
+    <id column="tsta_id" property="tstaId" jdbcType="BIGINT" />
+    <result column="tsta_shipper" property="tstaShipper" jdbcType="BIGINT" />
+    <result column="tsta_prov_id" property="tstaProvId" jdbcType="BIGINT" />
+    <result column="tsta_city_id" property="tstaCityId" jdbcType="BIGINT" />
+    <result column="tsta_region_id" property="tstaRegionId" jdbcType="BIGINT" />
+    <result column="tsta_addresss" property="tstaAddresss" jdbcType="VARCHAR" />
+    <result column="tsta_disburden_Label" property="tstaDisburdenLabel" jdbcType="VARCHAR" />
+    <result column="tsta_longitude" property="tstaLongitude" jdbcType="VARCHAR" />
+    <result column="tsta_latitude" property="tstaLatitude" jdbcType="VARCHAR" />
+    <result column="tsta_add_date" property="tstaAddDate" jdbcType="TIMESTAMP" />
+    <result column="tsta_state" property="tstaState" jdbcType="INTEGER" />
+    <result column="tsa_contact_person" property="tsaContactPerson" jdbcType="VARCHAR" />
+    <result column="tsta_contact_phone" property="tstaContactPhone" jdbcType="VARCHAR" />
+    <result column="tsfa_company_name" property="tsfaCompanyName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsta_id, tsta_shipper, tsta_prov_id, tsta_city_id, tsta_region_id, tsta_addresss, 
+    tsta_disburden_Label, tsta_longitude, tsta_latitude, tsta_add_date, tsta_state, tsa_contact_person, 
+    tsta_contact_phone, tsfa_company_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shipper_to_address
+    where tsta_id = #{tstaId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shipper_to_address
+    where tsta_id = #{tstaId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbShipperToAddress" >
+    insert into tb_shipper_to_address (tsta_id, tsta_shipper, tsta_prov_id, 
+      tsta_city_id, tsta_region_id, tsta_addresss, 
+      tsta_disburden_Label, tsta_longitude, tsta_latitude, 
+      tsta_add_date, tsta_state, tsa_contact_person, 
+      tsta_contact_phone, tsfa_company_name)
+    values (#{tstaId,jdbcType=BIGINT}, #{tstaShipper,jdbcType=BIGINT}, #{tstaProvId,jdbcType=BIGINT}, 
+      #{tstaCityId,jdbcType=BIGINT}, #{tstaRegionId,jdbcType=BIGINT}, #{tstaAddresss,jdbcType=VARCHAR}, 
+      #{tstaDisburdenLabel,jdbcType=VARCHAR}, #{tstaLongitude,jdbcType=VARCHAR}, #{tstaLatitude,jdbcType=VARCHAR}, 
+      #{tstaAddDate,jdbcType=TIMESTAMP}, #{tstaState,jdbcType=INTEGER}, #{tsaContactPerson,jdbcType=VARCHAR}, 
+      #{tstaContactPhone,jdbcType=VARCHAR}, #{tsfaCompanyName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbShipperToAddress" >
+    insert into tb_shipper_to_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tstaId != null" >
+        tsta_id,
+      </if>
+      <if test="tstaShipper != null" >
+        tsta_shipper,
+      </if>
+      <if test="tstaProvId != null" >
+        tsta_prov_id,
+      </if>
+      <if test="tstaCityId != null" >
+        tsta_city_id,
+      </if>
+      <if test="tstaRegionId != null" >
+        tsta_region_id,
+      </if>
+      <if test="tstaAddresss != null" >
+        tsta_addresss,
+      </if>
+      <if test="tstaDisburdenLabel != null" >
+        tsta_disburden_Label,
+      </if>
+      <if test="tstaLongitude != null" >
+        tsta_longitude,
+      </if>
+      <if test="tstaLatitude != null" >
+        tsta_latitude,
+      </if>
+      <if test="tstaAddDate != null" >
+        tsta_add_date,
+      </if>
+      <if test="tstaState != null" >
+        tsta_state,
+      </if>
+      <if test="tsaContactPerson != null" >
+        tsa_contact_person,
+      </if>
+      <if test="tstaContactPhone != null" >
+        tsta_contact_phone,
+      </if>
+      <if test="tsfaCompanyName != null" >
+        tsfa_company_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tstaId != null" >
+        #{tstaId,jdbcType=BIGINT},
+      </if>
+      <if test="tstaShipper != null" >
+        #{tstaShipper,jdbcType=BIGINT},
+      </if>
+      <if test="tstaProvId != null" >
+        #{tstaProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tstaCityId != null" >
+        #{tstaCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tstaRegionId != null" >
+        #{tstaRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tstaAddresss != null" >
+        #{tstaAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaDisburdenLabel != null" >
+        #{tstaDisburdenLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaLongitude != null" >
+        #{tstaLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaLatitude != null" >
+        #{tstaLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaAddDate != null" >
+        #{tstaAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tstaState != null" >
+        #{tstaState,jdbcType=INTEGER},
+      </if>
+      <if test="tsaContactPerson != null" >
+        #{tsaContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaContactPhone != null" >
+        #{tstaContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaCompanyName != null" >
+        #{tsfaCompanyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbShipperToAddress" >
+    update tb_shipper_to_address
+    <set >
+      <if test="tstaShipper != null" >
+        tsta_shipper = #{tstaShipper,jdbcType=BIGINT},
+      </if>
+      <if test="tstaProvId != null" >
+        tsta_prov_id = #{tstaProvId,jdbcType=BIGINT},
+      </if>
+      <if test="tstaCityId != null" >
+        tsta_city_id = #{tstaCityId,jdbcType=BIGINT},
+      </if>
+      <if test="tstaRegionId != null" >
+        tsta_region_id = #{tstaRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="tstaAddresss != null" >
+        tsta_addresss = #{tstaAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaDisburdenLabel != null" >
+        tsta_disburden_Label = #{tstaDisburdenLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaLongitude != null" >
+        tsta_longitude = #{tstaLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaLatitude != null" >
+        tsta_latitude = #{tstaLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaAddDate != null" >
+        tsta_add_date = #{tstaAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tstaState != null" >
+        tsta_state = #{tstaState,jdbcType=INTEGER},
+      </if>
+      <if test="tsaContactPerson != null" >
+        tsa_contact_person = #{tsaContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="tstaContactPhone != null" >
+        tsta_contact_phone = #{tstaContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsfaCompanyName != null" >
+        tsfa_company_name = #{tsfaCompanyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsta_id = #{tstaId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbShipperToAddress" >
+    update tb_shipper_to_address
+    set tsta_shipper = #{tstaShipper,jdbcType=BIGINT},
+      tsta_prov_id = #{tstaProvId,jdbcType=BIGINT},
+      tsta_city_id = #{tstaCityId,jdbcType=BIGINT},
+      tsta_region_id = #{tstaRegionId,jdbcType=BIGINT},
+      tsta_addresss = #{tstaAddresss,jdbcType=VARCHAR},
+      tsta_disburden_Label = #{tstaDisburdenLabel,jdbcType=VARCHAR},
+      tsta_longitude = #{tstaLongitude,jdbcType=VARCHAR},
+      tsta_latitude = #{tstaLatitude,jdbcType=VARCHAR},
+      tsta_add_date = #{tstaAddDate,jdbcType=TIMESTAMP},
+      tsta_state = #{tstaState,jdbcType=INTEGER},
+      tsa_contact_person = #{tsaContactPerson,jdbcType=VARCHAR},
+      tsta_contact_phone = #{tstaContactPhone,jdbcType=VARCHAR},
+      tsfa_company_name = #{tsfaCompanyName,jdbcType=VARCHAR}
+    where tsta_id = #{tstaId,jdbcType=BIGINT}
+  </update>
+</mapper>

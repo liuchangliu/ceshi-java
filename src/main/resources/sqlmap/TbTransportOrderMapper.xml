@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbTransportOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbTransportOrder" >
+    <id column="tto_id" property="ttoId" jdbcType="BIGINT" />
+    <result column="tto_task_id" property="ttoTaskId" jdbcType="BIGINT" />
+    <result column="tto_number" property="ttoNumber" jdbcType="VARCHAR" />
+    <result column="tto_driver_id" property="ttoDriverId" jdbcType="BIGINT" />
+    <result column="tto_transport_from_weight" property="ttoTransportFromWeight" jdbcType="DOUBLE" />
+    <result column="tto_transport_weight" property="ttoTransportWeight" jdbcType="DOUBLE" />
+    <result column="tto_transport_price" property="ttoTransportPrice" jdbcType="DOUBLE" />
+    <result column="tto_receipt_type" property="ttoReceiptType" jdbcType="INTEGER" />
+    <result column="tto_receipt_date" property="ttoReceiptDate" jdbcType="TIMESTAMP" />
+    <result column="tto_receipt_image" property="ttoReceiptImage" jdbcType="VARCHAR" />
+    <result column="tto_receipt_image_upload_time" property="ttoReceiptImageUploadTime" jdbcType="TIMESTAMP" />
+    <result column="tto_status" property="ttoStatus" jdbcType="INTEGER" />
+    <result column="tto_refuse_status" property="ttoRefuseStatus" jdbcType="INTEGER" />
+    <result column="tto_refuse_desc" property="ttoRefuseDesc" jdbcType="VARCHAR" />
+    <result column="tto_add_date" property="ttoAddDate" jdbcType="TIMESTAMP" />
+    <result column="tto_reject_desc" property="ttoRejectDesc" jdbcType="VARCHAR" />
+    <result column="tto_oil_price" property="ttoOilPrice" jdbcType="DOUBLE" />
+    <result column="tto_gas_price" property="ttoGasPrice" jdbcType="DOUBLE" />
+    <result column="tto_overtake_or_standard_price" property="ttoOvertakeOrStandardPrice" jdbcType="DOUBLE" />
+    <result column="tto_road_toll_price" property="ttoRoadTollPrice" jdbcType="DOUBLE" />
+    <result column="tto_other_price" property="ttoOtherPrice" jdbcType="DOUBLE" />
+    <result column="tto_total_non_fixed_price" property="ttoTotalNonFixedPrice" jdbcType="DOUBLE" />
+    <result column="tto_loss_price" property="ttoLossPrice" jdbcType="DOUBLE" />
+    <result column="tto_discount_price" property="ttoDiscountPrice" jdbcType="DOUBLE" />
+    <result column="tto_total_fixed_price" property="ttoTotalFixedPrice" jdbcType="DOUBLE" />
+    <result column="tto_goods_total_price" property="ttoGoodsTotalPrice" jdbcType="DOUBLE" />
+    <result column="tto_cancel_reason" property="ttoCancelReason" jdbcType="VARCHAR" />
+    <result column="tto_pay_bank_num" property="ttoPayBankNum" jdbcType="VARCHAR" />
+    <result column="tto_pay_bank_status" property="ttoPayBankStatus" jdbcType="INTEGER" />
+    <result column="tto_pay_bank_desp" property="ttoPayBankDesp" jdbcType="VARCHAR" />
+    <result column="tto_examine_date" property="ttoExamineDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tto_id, tto_task_id, tto_number, tto_driver_id, tto_transport_from_weight, tto_transport_weight, 
+    tto_transport_price, tto_receipt_type, tto_receipt_date, tto_receipt_image, tto_receipt_image_upload_time, 
+    tto_status, tto_refuse_status, tto_refuse_desc, tto_add_date, tto_reject_desc, tto_oil_price, 
+    tto_gas_price, tto_overtake_or_standard_price, tto_road_toll_price, tto_other_price, 
+    tto_total_non_fixed_price, tto_loss_price, tto_discount_price, tto_total_fixed_price, 
+    tto_goods_total_price, tto_cancel_reason, tto_pay_bank_num, tto_pay_bank_status, 
+    tto_pay_bank_desp, tto_examine_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_transport_order
+    where tto_id = #{ttoId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_transport_order
+    where tto_id = #{ttoId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbTransportOrder" >
+    insert into tb_transport_order (tto_id, tto_task_id, tto_number, 
+      tto_driver_id, tto_transport_from_weight, tto_transport_weight, 
+      tto_transport_price, tto_receipt_type, tto_receipt_date, 
+      tto_receipt_image, tto_receipt_image_upload_time, 
+      tto_status, tto_refuse_status, tto_refuse_desc, 
+      tto_add_date, tto_reject_desc, tto_oil_price, 
+      tto_gas_price, tto_overtake_or_standard_price, 
+      tto_road_toll_price, tto_other_price, tto_total_non_fixed_price, 
+      tto_loss_price, tto_discount_price, tto_total_fixed_price, 
+      tto_goods_total_price, tto_cancel_reason, tto_pay_bank_num, 
+      tto_pay_bank_status, tto_pay_bank_desp, tto_examine_date
+      )
+    values (#{ttoId,jdbcType=BIGINT}, #{ttoTaskId,jdbcType=BIGINT}, #{ttoNumber,jdbcType=VARCHAR}, 
+      #{ttoDriverId,jdbcType=BIGINT}, #{ttoTransportFromWeight,jdbcType=DOUBLE}, #{ttoTransportWeight,jdbcType=DOUBLE}, 
+      #{ttoTransportPrice,jdbcType=DOUBLE}, #{ttoReceiptType,jdbcType=INTEGER}, #{ttoReceiptDate,jdbcType=TIMESTAMP}, 
+      #{ttoReceiptImage,jdbcType=VARCHAR}, #{ttoReceiptImageUploadTime,jdbcType=TIMESTAMP}, 
+      #{ttoStatus,jdbcType=INTEGER}, #{ttoRefuseStatus,jdbcType=INTEGER}, #{ttoRefuseDesc,jdbcType=VARCHAR}, 
+      #{ttoAddDate,jdbcType=TIMESTAMP}, #{ttoRejectDesc,jdbcType=VARCHAR}, #{ttoOilPrice,jdbcType=DOUBLE}, 
+      #{ttoGasPrice,jdbcType=DOUBLE}, #{ttoOvertakeOrStandardPrice,jdbcType=DOUBLE}, 
+      #{ttoRoadTollPrice,jdbcType=DOUBLE}, #{ttoOtherPrice,jdbcType=DOUBLE}, #{ttoTotalNonFixedPrice,jdbcType=DOUBLE}, 
+      #{ttoLossPrice,jdbcType=DOUBLE}, #{ttoDiscountPrice,jdbcType=DOUBLE}, #{ttoTotalFixedPrice,jdbcType=DOUBLE}, 
+      #{ttoGoodsTotalPrice,jdbcType=DOUBLE}, #{ttoCancelReason,jdbcType=VARCHAR}, #{ttoPayBankNum,jdbcType=VARCHAR}, 
+      #{ttoPayBankStatus,jdbcType=INTEGER}, #{ttoPayBankDesp,jdbcType=VARCHAR}, #{ttoExamineDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbTransportOrder" >
+    insert into tb_transport_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ttoId != null" >
+        tto_id,
+      </if>
+      <if test="ttoTaskId != null" >
+        tto_task_id,
+      </if>
+      <if test="ttoNumber != null" >
+        tto_number,
+      </if>
+      <if test="ttoDriverId != null" >
+        tto_driver_id,
+      </if>
+      <if test="ttoTransportFromWeight != null" >
+        tto_transport_from_weight,
+      </if>
+      <if test="ttoTransportWeight != null" >
+        tto_transport_weight,
+      </if>
+      <if test="ttoTransportPrice != null" >
+        tto_transport_price,
+      </if>
+      <if test="ttoReceiptType != null" >
+        tto_receipt_type,
+      </if>
+      <if test="ttoReceiptDate != null" >
+        tto_receipt_date,
+      </if>
+      <if test="ttoReceiptImage != null" >
+        tto_receipt_image,
+      </if>
+      <if test="ttoReceiptImageUploadTime != null" >
+        tto_receipt_image_upload_time,
+      </if>
+      <if test="ttoStatus != null" >
+        tto_status,
+      </if>
+      <if test="ttoRefuseStatus != null" >
+        tto_refuse_status,
+      </if>
+      <if test="ttoRefuseDesc != null" >
+        tto_refuse_desc,
+      </if>
+      <if test="ttoAddDate != null" >
+        tto_add_date,
+      </if>
+      <if test="ttoRejectDesc != null" >
+        tto_reject_desc,
+      </if>
+      <if test="ttoOilPrice != null" >
+        tto_oil_price,
+      </if>
+      <if test="ttoGasPrice != null" >
+        tto_gas_price,
+      </if>
+      <if test="ttoOvertakeOrStandardPrice != null" >
+        tto_overtake_or_standard_price,
+      </if>
+      <if test="ttoRoadTollPrice != null" >
+        tto_road_toll_price,
+      </if>
+      <if test="ttoOtherPrice != null" >
+        tto_other_price,
+      </if>
+      <if test="ttoTotalNonFixedPrice != null" >
+        tto_total_non_fixed_price,
+      </if>
+      <if test="ttoLossPrice != null" >
+        tto_loss_price,
+      </if>
+      <if test="ttoDiscountPrice != null" >
+        tto_discount_price,
+      </if>
+      <if test="ttoTotalFixedPrice != null" >
+        tto_total_fixed_price,
+      </if>
+      <if test="ttoGoodsTotalPrice != null" >
+        tto_goods_total_price,
+      </if>
+      <if test="ttoCancelReason != null" >
+        tto_cancel_reason,
+      </if>
+      <if test="ttoPayBankNum != null" >
+        tto_pay_bank_num,
+      </if>
+      <if test="ttoPayBankStatus != null" >
+        tto_pay_bank_status,
+      </if>
+      <if test="ttoPayBankDesp != null" >
+        tto_pay_bank_desp,
+      </if>
+      <if test="ttoExamineDate != null" >
+        tto_examine_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ttoId != null" >
+        #{ttoId,jdbcType=BIGINT},
+      </if>
+      <if test="ttoTaskId != null" >
+        #{ttoTaskId,jdbcType=BIGINT},
+      </if>
+      <if test="ttoNumber != null" >
+        #{ttoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoDriverId != null" >
+        #{ttoDriverId,jdbcType=BIGINT},
+      </if>
+      <if test="ttoTransportFromWeight != null" >
+        #{ttoTransportFromWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTransportWeight != null" >
+        #{ttoTransportWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTransportPrice != null" >
+        #{ttoTransportPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoReceiptType != null" >
+        #{ttoReceiptType,jdbcType=INTEGER},
+      </if>
+      <if test="ttoReceiptDate != null" >
+        #{ttoReceiptDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttoReceiptImage != null" >
+        #{ttoReceiptImage,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoReceiptImageUploadTime != null" >
+        #{ttoReceiptImageUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttoStatus != null" >
+        #{ttoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttoRefuseStatus != null" >
+        #{ttoRefuseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttoRefuseDesc != null" >
+        #{ttoRefuseDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoAddDate != null" >
+        #{ttoAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttoRejectDesc != null" >
+        #{ttoRejectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoOilPrice != null" >
+        #{ttoOilPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoGasPrice != null" >
+        #{ttoGasPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoOvertakeOrStandardPrice != null" >
+        #{ttoOvertakeOrStandardPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoRoadTollPrice != null" >
+        #{ttoRoadTollPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoOtherPrice != null" >
+        #{ttoOtherPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTotalNonFixedPrice != null" >
+        #{ttoTotalNonFixedPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoLossPrice != null" >
+        #{ttoLossPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoDiscountPrice != null" >
+        #{ttoDiscountPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTotalFixedPrice != null" >
+        #{ttoTotalFixedPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoGoodsTotalPrice != null" >
+        #{ttoGoodsTotalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoCancelReason != null" >
+        #{ttoCancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoPayBankNum != null" >
+        #{ttoPayBankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoPayBankStatus != null" >
+        #{ttoPayBankStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttoPayBankDesp != null" >
+        #{ttoPayBankDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoExamineDate != null" >
+        #{ttoExamineDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbTransportOrder" >
+    update tb_transport_order
+    <set >
+      <if test="ttoTaskId != null" >
+        tto_task_id = #{ttoTaskId,jdbcType=BIGINT},
+      </if>
+      <if test="ttoNumber != null" >
+        tto_number = #{ttoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoDriverId != null" >
+        tto_driver_id = #{ttoDriverId,jdbcType=BIGINT},
+      </if>
+      <if test="ttoTransportFromWeight != null" >
+        tto_transport_from_weight = #{ttoTransportFromWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTransportWeight != null" >
+        tto_transport_weight = #{ttoTransportWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTransportPrice != null" >
+        tto_transport_price = #{ttoTransportPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoReceiptType != null" >
+        tto_receipt_type = #{ttoReceiptType,jdbcType=INTEGER},
+      </if>
+      <if test="ttoReceiptDate != null" >
+        tto_receipt_date = #{ttoReceiptDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttoReceiptImage != null" >
+        tto_receipt_image = #{ttoReceiptImage,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoReceiptImageUploadTime != null" >
+        tto_receipt_image_upload_time = #{ttoReceiptImageUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttoStatus != null" >
+        tto_status = #{ttoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttoRefuseStatus != null" >
+        tto_refuse_status = #{ttoRefuseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttoRefuseDesc != null" >
+        tto_refuse_desc = #{ttoRefuseDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoAddDate != null" >
+        tto_add_date = #{ttoAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttoRejectDesc != null" >
+        tto_reject_desc = #{ttoRejectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoOilPrice != null" >
+        tto_oil_price = #{ttoOilPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoGasPrice != null" >
+        tto_gas_price = #{ttoGasPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoOvertakeOrStandardPrice != null" >
+        tto_overtake_or_standard_price = #{ttoOvertakeOrStandardPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoRoadTollPrice != null" >
+        tto_road_toll_price = #{ttoRoadTollPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoOtherPrice != null" >
+        tto_other_price = #{ttoOtherPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTotalNonFixedPrice != null" >
+        tto_total_non_fixed_price = #{ttoTotalNonFixedPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoLossPrice != null" >
+        tto_loss_price = #{ttoLossPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoDiscountPrice != null" >
+        tto_discount_price = #{ttoDiscountPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoTotalFixedPrice != null" >
+        tto_total_fixed_price = #{ttoTotalFixedPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoGoodsTotalPrice != null" >
+        tto_goods_total_price = #{ttoGoodsTotalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttoCancelReason != null" >
+        tto_cancel_reason = #{ttoCancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoPayBankNum != null" >
+        tto_pay_bank_num = #{ttoPayBankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoPayBankStatus != null" >
+        tto_pay_bank_status = #{ttoPayBankStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttoPayBankDesp != null" >
+        tto_pay_bank_desp = #{ttoPayBankDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="ttoExamineDate != null" >
+        tto_examine_date = #{ttoExamineDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tto_id = #{ttoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbTransportOrder" >
+    update tb_transport_order
+    set tto_task_id = #{ttoTaskId,jdbcType=BIGINT},
+      tto_number = #{ttoNumber,jdbcType=VARCHAR},
+      tto_driver_id = #{ttoDriverId,jdbcType=BIGINT},
+      tto_transport_from_weight = #{ttoTransportFromWeight,jdbcType=DOUBLE},
+      tto_transport_weight = #{ttoTransportWeight,jdbcType=DOUBLE},
+      tto_transport_price = #{ttoTransportPrice,jdbcType=DOUBLE},
+      tto_receipt_type = #{ttoReceiptType,jdbcType=INTEGER},
+      tto_receipt_date = #{ttoReceiptDate,jdbcType=TIMESTAMP},
+      tto_receipt_image = #{ttoReceiptImage,jdbcType=VARCHAR},
+      tto_receipt_image_upload_time = #{ttoReceiptImageUploadTime,jdbcType=TIMESTAMP},
+      tto_status = #{ttoStatus,jdbcType=INTEGER},
+      tto_refuse_status = #{ttoRefuseStatus,jdbcType=INTEGER},
+      tto_refuse_desc = #{ttoRefuseDesc,jdbcType=VARCHAR},
+      tto_add_date = #{ttoAddDate,jdbcType=TIMESTAMP},
+      tto_reject_desc = #{ttoRejectDesc,jdbcType=VARCHAR},
+      tto_oil_price = #{ttoOilPrice,jdbcType=DOUBLE},
+      tto_gas_price = #{ttoGasPrice,jdbcType=DOUBLE},
+      tto_overtake_or_standard_price = #{ttoOvertakeOrStandardPrice,jdbcType=DOUBLE},
+      tto_road_toll_price = #{ttoRoadTollPrice,jdbcType=DOUBLE},
+      tto_other_price = #{ttoOtherPrice,jdbcType=DOUBLE},
+      tto_total_non_fixed_price = #{ttoTotalNonFixedPrice,jdbcType=DOUBLE},
+      tto_loss_price = #{ttoLossPrice,jdbcType=DOUBLE},
+      tto_discount_price = #{ttoDiscountPrice,jdbcType=DOUBLE},
+      tto_total_fixed_price = #{ttoTotalFixedPrice,jdbcType=DOUBLE},
+      tto_goods_total_price = #{ttoGoodsTotalPrice,jdbcType=DOUBLE},
+      tto_cancel_reason = #{ttoCancelReason,jdbcType=VARCHAR},
+      tto_pay_bank_num = #{ttoPayBankNum,jdbcType=VARCHAR},
+      tto_pay_bank_status = #{ttoPayBankStatus,jdbcType=INTEGER},
+      tto_pay_bank_desp = #{ttoPayBankDesp,jdbcType=VARCHAR},
+      tto_examine_date = #{ttoExamineDate,jdbcType=TIMESTAMP}
+    where tto_id = #{ttoId,jdbcType=BIGINT}
+  </update>
+</mapper>

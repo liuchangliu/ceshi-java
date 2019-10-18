@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbSystemLogsMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbSystemLogs" >
+    <id column="tsl_id" property="tslId" jdbcType="BIGINT" />
+    <result column="tsl_type" property="tslType" jdbcType="INTEGER" />
+    <result column="tsl_account_type" property="tslAccountType" jdbcType="INTEGER" />
+    <result column="tsl_login_account" property="tslLoginAccount" jdbcType="VARCHAR" />
+    <result column="tsl_login_ip" property="tslLoginIp" jdbcType="VARCHAR" />
+    <result column="tsl_add_date" property="tslAddDate" jdbcType="TIMESTAMP" />
+    <result column="tls_memo" property="tlsMemo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsl_id, tsl_type, tsl_account_type, tsl_login_account, tsl_login_ip, tsl_add_date, 
+    tls_memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_system_logs
+    where tsl_id = #{tslId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_system_logs
+    where tsl_id = #{tslId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbSystemLogs" >
+    insert into tb_system_logs (tsl_id, tsl_type, tsl_account_type, 
+      tsl_login_account, tsl_login_ip, tsl_add_date, 
+      tls_memo)
+    values (#{tslId,jdbcType=BIGINT}, #{tslType,jdbcType=INTEGER}, #{tslAccountType,jdbcType=INTEGER}, 
+      #{tslLoginAccount,jdbcType=VARCHAR}, #{tslLoginIp,jdbcType=VARCHAR}, #{tslAddDate,jdbcType=TIMESTAMP}, 
+      #{tlsMemo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbSystemLogs" >
+    insert into tb_system_logs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tslId != null" >
+        tsl_id,
+      </if>
+      <if test="tslType != null" >
+        tsl_type,
+      </if>
+      <if test="tslAccountType != null" >
+        tsl_account_type,
+      </if>
+      <if test="tslLoginAccount != null" >
+        tsl_login_account,
+      </if>
+      <if test="tslLoginIp != null" >
+        tsl_login_ip,
+      </if>
+      <if test="tslAddDate != null" >
+        tsl_add_date,
+      </if>
+      <if test="tlsMemo != null" >
+        tls_memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tslId != null" >
+        #{tslId,jdbcType=BIGINT},
+      </if>
+      <if test="tslType != null" >
+        #{tslType,jdbcType=INTEGER},
+      </if>
+      <if test="tslAccountType != null" >
+        #{tslAccountType,jdbcType=INTEGER},
+      </if>
+      <if test="tslLoginAccount != null" >
+        #{tslLoginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tslLoginIp != null" >
+        #{tslLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="tslAddDate != null" >
+        #{tslAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tlsMemo != null" >
+        #{tlsMemo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbSystemLogs" >
+    update tb_system_logs
+    <set >
+      <if test="tslType != null" >
+        tsl_type = #{tslType,jdbcType=INTEGER},
+      </if>
+      <if test="tslAccountType != null" >
+        tsl_account_type = #{tslAccountType,jdbcType=INTEGER},
+      </if>
+      <if test="tslLoginAccount != null" >
+        tsl_login_account = #{tslLoginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tslLoginIp != null" >
+        tsl_login_ip = #{tslLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="tslAddDate != null" >
+        tsl_add_date = #{tslAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tlsMemo != null" >
+        tls_memo = #{tlsMemo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsl_id = #{tslId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbSystemLogs" >
+    update tb_system_logs
+    set tsl_type = #{tslType,jdbcType=INTEGER},
+      tsl_account_type = #{tslAccountType,jdbcType=INTEGER},
+      tsl_login_account = #{tslLoginAccount,jdbcType=VARCHAR},
+      tsl_login_ip = #{tslLoginIp,jdbcType=VARCHAR},
+      tsl_add_date = #{tslAddDate,jdbcType=TIMESTAMP},
+      tls_memo = #{tlsMemo,jdbcType=VARCHAR}
+    where tsl_id = #{tslId,jdbcType=BIGINT}
+  </update>
+</mapper>

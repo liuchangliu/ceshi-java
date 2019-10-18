@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbFollowHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbFollowHistory" >
+    <id column="tfh_id" property="tfhId" jdbcType="BIGINT" />
+    <result column="tfh_type" property="tfhType" jdbcType="INTEGER" />
+    <result column="tfh_from" property="tfhFrom" jdbcType="BIGINT" />
+    <result column="tfh_to" property="tfhTo" jdbcType="BIGINT" />
+    <result column="tfh_add_date" property="tfhAddDate" jdbcType="TIMESTAMP" />
+    <result column="tfh_status" property="tfhStatus" jdbcType="INTEGER" />
+    <result column="tfh_check_datetime" property="tfhCheckDatetime" jdbcType="TIMESTAMP" />
+    <result column="tfh_check_des" property="tfhCheckDes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tfh_id, tfh_type, tfh_from, tfh_to, tfh_add_date, tfh_status, tfh_check_datetime, 
+    tfh_check_des
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_follow_history
+    where tfh_id = #{tfhId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_follow_history
+    where tfh_id = #{tfhId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbFollowHistory" >
+    insert into tb_follow_history (tfh_id, tfh_type, tfh_from, 
+      tfh_to, tfh_add_date, tfh_status, 
+      tfh_check_datetime, tfh_check_des)
+    values (#{tfhId,jdbcType=BIGINT}, #{tfhType,jdbcType=INTEGER}, #{tfhFrom,jdbcType=BIGINT}, 
+      #{tfhTo,jdbcType=BIGINT}, #{tfhAddDate,jdbcType=TIMESTAMP}, #{tfhStatus,jdbcType=INTEGER}, 
+      #{tfhCheckDatetime,jdbcType=TIMESTAMP}, #{tfhCheckDes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbFollowHistory" >
+    insert into tb_follow_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tfhId != null" >
+        tfh_id,
+      </if>
+      <if test="tfhType != null" >
+        tfh_type,
+      </if>
+      <if test="tfhFrom != null" >
+        tfh_from,
+      </if>
+      <if test="tfhTo != null" >
+        tfh_to,
+      </if>
+      <if test="tfhAddDate != null" >
+        tfh_add_date,
+      </if>
+      <if test="tfhStatus != null" >
+        tfh_status,
+      </if>
+      <if test="tfhCheckDatetime != null" >
+        tfh_check_datetime,
+      </if>
+      <if test="tfhCheckDes != null" >
+        tfh_check_des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tfhId != null" >
+        #{tfhId,jdbcType=BIGINT},
+      </if>
+      <if test="tfhType != null" >
+        #{tfhType,jdbcType=INTEGER},
+      </if>
+      <if test="tfhFrom != null" >
+        #{tfhFrom,jdbcType=BIGINT},
+      </if>
+      <if test="tfhTo != null" >
+        #{tfhTo,jdbcType=BIGINT},
+      </if>
+      <if test="tfhAddDate != null" >
+        #{tfhAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tfhStatus != null" >
+        #{tfhStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tfhCheckDatetime != null" >
+        #{tfhCheckDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tfhCheckDes != null" >
+        #{tfhCheckDes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbFollowHistory" >
+    update tb_follow_history
+    <set >
+      <if test="tfhType != null" >
+        tfh_type = #{tfhType,jdbcType=INTEGER},
+      </if>
+      <if test="tfhFrom != null" >
+        tfh_from = #{tfhFrom,jdbcType=BIGINT},
+      </if>
+      <if test="tfhTo != null" >
+        tfh_to = #{tfhTo,jdbcType=BIGINT},
+      </if>
+      <if test="tfhAddDate != null" >
+        tfh_add_date = #{tfhAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tfhStatus != null" >
+        tfh_status = #{tfhStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tfhCheckDatetime != null" >
+        tfh_check_datetime = #{tfhCheckDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tfhCheckDes != null" >
+        tfh_check_des = #{tfhCheckDes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tfh_id = #{tfhId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbFollowHistory" >
+    update tb_follow_history
+    set tfh_type = #{tfhType,jdbcType=INTEGER},
+      tfh_from = #{tfhFrom,jdbcType=BIGINT},
+      tfh_to = #{tfhTo,jdbcType=BIGINT},
+      tfh_add_date = #{tfhAddDate,jdbcType=TIMESTAMP},
+      tfh_status = #{tfhStatus,jdbcType=INTEGER},
+      tfh_check_datetime = #{tfhCheckDatetime,jdbcType=TIMESTAMP},
+      tfh_check_des = #{tfhCheckDes,jdbcType=VARCHAR}
+    where tfh_id = #{tfhId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbShipperBankInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbShipperBankInfo" >
+    <id column="tsbi_id" property="tsbiId" jdbcType="BIGINT" />
+    <result column="tsbi_bank_id" property="tsbiBankId" jdbcType="BIGINT" />
+    <result column="tsbi_shipper_id" property="tsbiShipperId" jdbcType="BIGINT" />
+    <result column="tsbi_branch_name" property="tsbiBranchName" jdbcType="VARCHAR" />
+    <result column="tsbi_shipper_phone" property="tsbiShipperPhone" jdbcType="VARCHAR" />
+    <result column="tsbi_account" property="tsbiAccount" jdbcType="VARCHAR" />
+    <result column="tsbi_name" property="tsbiName" jdbcType="VARCHAR" />
+    <result column="tsbi_add_date" property="tsbiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tsbi_status" property="tsbiStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsbi_id, tsbi_bank_id, tsbi_shipper_id, tsbi_branch_name, tsbi_shipper_phone, tsbi_account, 
+    tsbi_name, tsbi_add_date, tsbi_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shipper_bank_info
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shipper_bank_info
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbShipperBankInfo" >
+    insert into tb_shipper_bank_info (tsbi_id, tsbi_bank_id, tsbi_shipper_id, 
+      tsbi_branch_name, tsbi_shipper_phone, tsbi_account, 
+      tsbi_name, tsbi_add_date, tsbi_status
+      )
+    values (#{tsbiId,jdbcType=BIGINT}, #{tsbiBankId,jdbcType=BIGINT}, #{tsbiShipperId,jdbcType=BIGINT}, 
+      #{tsbiBranchName,jdbcType=VARCHAR}, #{tsbiShipperPhone,jdbcType=VARCHAR}, #{tsbiAccount,jdbcType=VARCHAR}, 
+      #{tsbiName,jdbcType=VARCHAR}, #{tsbiAddDate,jdbcType=TIMESTAMP}, #{tsbiStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbShipperBankInfo" >
+    insert into tb_shipper_bank_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsbiId != null" >
+        tsbi_id,
+      </if>
+      <if test="tsbiBankId != null" >
+        tsbi_bank_id,
+      </if>
+      <if test="tsbiShipperId != null" >
+        tsbi_shipper_id,
+      </if>
+      <if test="tsbiBranchName != null" >
+        tsbi_branch_name,
+      </if>
+      <if test="tsbiShipperPhone != null" >
+        tsbi_shipper_phone,
+      </if>
+      <if test="tsbiAccount != null" >
+        tsbi_account,
+      </if>
+      <if test="tsbiName != null" >
+        tsbi_name,
+      </if>
+      <if test="tsbiAddDate != null" >
+        tsbi_add_date,
+      </if>
+      <if test="tsbiStatus != null" >
+        tsbi_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsbiId != null" >
+        #{tsbiId,jdbcType=BIGINT},
+      </if>
+      <if test="tsbiBankId != null" >
+        #{tsbiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tsbiShipperId != null" >
+        #{tsbiShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsbiBranchName != null" >
+        #{tsbiBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiShipperPhone != null" >
+        #{tsbiShipperPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiAccount != null" >
+        #{tsbiAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiName != null" >
+        #{tsbiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiAddDate != null" >
+        #{tsbiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsbiStatus != null" >
+        #{tsbiStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbShipperBankInfo" >
+    update tb_shipper_bank_info
+    <set >
+      <if test="tsbiBankId != null" >
+        tsbi_bank_id = #{tsbiBankId,jdbcType=BIGINT},
+      </if>
+      <if test="tsbiShipperId != null" >
+        tsbi_shipper_id = #{tsbiShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsbiBranchName != null" >
+        tsbi_branch_name = #{tsbiBranchName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiShipperPhone != null" >
+        tsbi_shipper_phone = #{tsbiShipperPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiAccount != null" >
+        tsbi_account = #{tsbiAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiName != null" >
+        tsbi_name = #{tsbiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsbiAddDate != null" >
+        tsbi_add_date = #{tsbiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsbiStatus != null" >
+        tsbi_status = #{tsbiStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbShipperBankInfo" >
+    update tb_shipper_bank_info
+    set tsbi_bank_id = #{tsbiBankId,jdbcType=BIGINT},
+      tsbi_shipper_id = #{tsbiShipperId,jdbcType=BIGINT},
+      tsbi_branch_name = #{tsbiBranchName,jdbcType=VARCHAR},
+      tsbi_shipper_phone = #{tsbiShipperPhone,jdbcType=VARCHAR},
+      tsbi_account = #{tsbiAccount,jdbcType=VARCHAR},
+      tsbi_name = #{tsbiName,jdbcType=VARCHAR},
+      tsbi_add_date = #{tsbiAddDate,jdbcType=TIMESTAMP},
+      tsbi_status = #{tsbiStatus,jdbcType=INTEGER}
+    where tsbi_id = #{tsbiId,jdbcType=BIGINT}
+  </update>
+</mapper>

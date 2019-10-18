@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.GroupandmenuMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Groupandmenu" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="groupId" property="groupid" jdbcType="INTEGER" />
+    <result column="menuId" property="menuid" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="addUserId" property="adduserid" jdbcType="BIGINT" />
+    <result column="addUsername" property="addusername" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, groupId, menuId, addtime, addUserId, addUsername, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from groupandmenu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from groupandmenu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.Groupandmenu" >
+    insert into groupandmenu (id, groupId, menuId, 
+      addtime, addUserId, addUsername, 
+      type)
+    values (#{id,jdbcType=BIGINT}, #{groupid,jdbcType=INTEGER}, #{menuid,jdbcType=INTEGER}, 
+      #{addtime,jdbcType=TIMESTAMP}, #{adduserid,jdbcType=BIGINT}, #{addusername,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.Groupandmenu" >
+    insert into groupandmenu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupid != null" >
+        groupId,
+      </if>
+      <if test="menuid != null" >
+        menuId,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="adduserid != null" >
+        addUserId,
+      </if>
+      <if test="addusername != null" >
+        addUsername,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null" >
+        #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        #{addusername,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Groupandmenu" >
+    update groupandmenu
+    <set >
+      <if test="groupid != null" >
+        groupId = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null" >
+        menuId = #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserid != null" >
+        addUserId = #{adduserid,jdbcType=BIGINT},
+      </if>
+      <if test="addusername != null" >
+        addUsername = #{addusername,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Groupandmenu" >
+    update groupandmenu
+    set groupId = #{groupid,jdbcType=INTEGER},
+      menuId = #{menuid,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      addUserId = #{adduserid,jdbcType=BIGINT},
+      addUsername = #{addusername,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

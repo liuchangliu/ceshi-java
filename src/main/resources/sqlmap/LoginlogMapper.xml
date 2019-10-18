@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.LoginlogMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Loginlog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ipAddress" property="ipaddress" jdbcType="VARCHAR" />
+    <result column="loginTime" property="logintime" jdbcType="TIMESTAMP" />
+    <result column="loginName" property="loginname" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ipAddress, loginTime, loginName, status, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from loginlog
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from loginlog
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.Loginlog" >
+    insert into loginlog (id, ipAddress, loginTime, 
+      loginName, status, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{ipaddress,jdbcType=VARCHAR}, #{logintime,jdbcType=TIMESTAMP}, 
+      #{loginname,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.Loginlog" >
+    insert into loginlog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ipaddress != null" >
+        ipAddress,
+      </if>
+      <if test="logintime != null" >
+        loginTime,
+      </if>
+      <if test="loginname != null" >
+        loginName,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ipaddress != null" >
+        #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginname != null" >
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Loginlog" >
+    update loginlog
+    <set >
+      <if test="ipaddress != null" >
+        ipAddress = #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        loginTime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginname != null" >
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Loginlog" >
+    update loginlog
+    set ipAddress = #{ipaddress,jdbcType=VARCHAR},
+      loginTime = #{logintime,jdbcType=TIMESTAMP},
+      loginName = #{loginname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

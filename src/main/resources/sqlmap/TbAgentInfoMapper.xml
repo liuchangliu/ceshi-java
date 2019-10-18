@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbAgentInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbAgentInfo" >
+    <id column="tai_id" property="taiId" jdbcType="BIGINT" />
+    <result column="tai_loginUser" property="taiLoginuser" jdbcType="VARCHAR" />
+    <result column="tai_password" property="taiPassword" jdbcType="VARCHAR" />
+    <result column="tai_name" property="taiName" jdbcType="VARCHAR" />
+    <result column="tai_phone" property="taiPhone" jdbcType="VARCHAR" />
+    <result column="tai_card_number" property="taiCardNumber" jdbcType="VARCHAR" />
+    <result column="tai_home_prov_id" property="taiHomeProvId" jdbcType="BIGINT" />
+    <result column="tai_home_city_id" property="taiHomeCityId" jdbcType="BIGINT" />
+    <result column="tai_home_region_id" property="taiHomeRegionId" jdbcType="BIGINT" />
+    <result column="tai_home_addresss" property="taiHomeAddresss" jdbcType="VARCHAR" />
+    <result column="tai_bank_number" property="taiBankNumber" jdbcType="VARCHAR" />
+    <result column="tai_bank_holder_name" property="taiBankHolderName" jdbcType="VARCHAR" />
+    <result column="tai_status" property="taiStatus" jdbcType="INTEGER" />
+    <result column="tai_add_date" property="taiAddDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tai_id, tai_loginUser, tai_password, tai_name, tai_phone, tai_card_number, tai_home_prov_id, 
+    tai_home_city_id, tai_home_region_id, tai_home_addresss, tai_bank_number, tai_bank_holder_name, 
+    tai_status, tai_add_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_agent_info
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_agent_info
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbAgentInfo" >
+    insert into tb_agent_info (tai_id, tai_loginUser, tai_password, 
+      tai_name, tai_phone, tai_card_number, 
+      tai_home_prov_id, tai_home_city_id, tai_home_region_id, 
+      tai_home_addresss, tai_bank_number, tai_bank_holder_name, 
+      tai_status, tai_add_date)
+    values (#{taiId,jdbcType=BIGINT}, #{taiLoginuser,jdbcType=VARCHAR}, #{taiPassword,jdbcType=VARCHAR}, 
+      #{taiName,jdbcType=VARCHAR}, #{taiPhone,jdbcType=VARCHAR}, #{taiCardNumber,jdbcType=VARCHAR}, 
+      #{taiHomeProvId,jdbcType=BIGINT}, #{taiHomeCityId,jdbcType=BIGINT}, #{taiHomeRegionId,jdbcType=BIGINT}, 
+      #{taiHomeAddresss,jdbcType=VARCHAR}, #{taiBankNumber,jdbcType=VARCHAR}, #{taiBankHolderName,jdbcType=VARCHAR}, 
+      #{taiStatus,jdbcType=INTEGER}, #{taiAddDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbAgentInfo" >
+    insert into tb_agent_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taiId != null" >
+        tai_id,
+      </if>
+      <if test="taiLoginuser != null" >
+        tai_loginUser,
+      </if>
+      <if test="taiPassword != null" >
+        tai_password,
+      </if>
+      <if test="taiName != null" >
+        tai_name,
+      </if>
+      <if test="taiPhone != null" >
+        tai_phone,
+      </if>
+      <if test="taiCardNumber != null" >
+        tai_card_number,
+      </if>
+      <if test="taiHomeProvId != null" >
+        tai_home_prov_id,
+      </if>
+      <if test="taiHomeCityId != null" >
+        tai_home_city_id,
+      </if>
+      <if test="taiHomeRegionId != null" >
+        tai_home_region_id,
+      </if>
+      <if test="taiHomeAddresss != null" >
+        tai_home_addresss,
+      </if>
+      <if test="taiBankNumber != null" >
+        tai_bank_number,
+      </if>
+      <if test="taiBankHolderName != null" >
+        tai_bank_holder_name,
+      </if>
+      <if test="taiStatus != null" >
+        tai_status,
+      </if>
+      <if test="taiAddDate != null" >
+        tai_add_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taiId != null" >
+        #{taiId,jdbcType=BIGINT},
+      </if>
+      <if test="taiLoginuser != null" >
+        #{taiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="taiPassword != null" >
+        #{taiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="taiName != null" >
+        #{taiName,jdbcType=VARCHAR},
+      </if>
+      <if test="taiPhone != null" >
+        #{taiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="taiCardNumber != null" >
+        #{taiCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="taiHomeProvId != null" >
+        #{taiHomeProvId,jdbcType=BIGINT},
+      </if>
+      <if test="taiHomeCityId != null" >
+        #{taiHomeCityId,jdbcType=BIGINT},
+      </if>
+      <if test="taiHomeRegionId != null" >
+        #{taiHomeRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="taiHomeAddresss != null" >
+        #{taiHomeAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="taiBankNumber != null" >
+        #{taiBankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="taiBankHolderName != null" >
+        #{taiBankHolderName,jdbcType=VARCHAR},
+      </if>
+      <if test="taiStatus != null" >
+        #{taiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="taiAddDate != null" >
+        #{taiAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbAgentInfo" >
+    update tb_agent_info
+    <set >
+      <if test="taiLoginuser != null" >
+        tai_loginUser = #{taiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="taiPassword != null" >
+        tai_password = #{taiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="taiName != null" >
+        tai_name = #{taiName,jdbcType=VARCHAR},
+      </if>
+      <if test="taiPhone != null" >
+        tai_phone = #{taiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="taiCardNumber != null" >
+        tai_card_number = #{taiCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="taiHomeProvId != null" >
+        tai_home_prov_id = #{taiHomeProvId,jdbcType=BIGINT},
+      </if>
+      <if test="taiHomeCityId != null" >
+        tai_home_city_id = #{taiHomeCityId,jdbcType=BIGINT},
+      </if>
+      <if test="taiHomeRegionId != null" >
+        tai_home_region_id = #{taiHomeRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="taiHomeAddresss != null" >
+        tai_home_addresss = #{taiHomeAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="taiBankNumber != null" >
+        tai_bank_number = #{taiBankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="taiBankHolderName != null" >
+        tai_bank_holder_name = #{taiBankHolderName,jdbcType=VARCHAR},
+      </if>
+      <if test="taiStatus != null" >
+        tai_status = #{taiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="taiAddDate != null" >
+        tai_add_date = #{taiAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbAgentInfo" >
+    update tb_agent_info
+    set tai_loginUser = #{taiLoginuser,jdbcType=VARCHAR},
+      tai_password = #{taiPassword,jdbcType=VARCHAR},
+      tai_name = #{taiName,jdbcType=VARCHAR},
+      tai_phone = #{taiPhone,jdbcType=VARCHAR},
+      tai_card_number = #{taiCardNumber,jdbcType=VARCHAR},
+      tai_home_prov_id = #{taiHomeProvId,jdbcType=BIGINT},
+      tai_home_city_id = #{taiHomeCityId,jdbcType=BIGINT},
+      tai_home_region_id = #{taiHomeRegionId,jdbcType=BIGINT},
+      tai_home_addresss = #{taiHomeAddresss,jdbcType=VARCHAR},
+      tai_bank_number = #{taiBankNumber,jdbcType=VARCHAR},
+      tai_bank_holder_name = #{taiBankHolderName,jdbcType=VARCHAR},
+      tai_status = #{taiStatus,jdbcType=INTEGER},
+      tai_add_date = #{taiAddDate,jdbcType=TIMESTAMP}
+    where tai_id = #{taiId,jdbcType=BIGINT}
+  </update>
+</mapper>

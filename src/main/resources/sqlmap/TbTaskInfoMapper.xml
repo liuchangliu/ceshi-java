@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbTaskInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbTaskInfo" >
+    <id column="tti_id" property="ttiId" jdbcType="BIGINT" />
+    <result column="tti_number" property="ttiNumber" jdbcType="VARCHAR" />
+    <result column="tti_shipper_id" property="ttiShipperId" jdbcType="BIGINT" />
+    <result column="tti_from_prov_id" property="ttiFromProvId" jdbcType="BIGINT" />
+    <result column="tti_from_city_id" property="ttiFromCityId" jdbcType="BIGINT" />
+    <result column="tti_from_region_id" property="ttiFromRegionId" jdbcType="BIGINT" />
+    <result column="tti_from_addresss" property="ttiFromAddresss" jdbcType="VARCHAR" />
+    <result column="tti_from_lable" property="ttiFromLable" jdbcType="VARCHAR" />
+    <result column="tti_from_longitude" property="ttiFromLongitude" jdbcType="VARCHAR" />
+    <result column="tti_from_latitude" property="ttiFromLatitude" jdbcType="VARCHAR" />
+    <result column="tti_from_person_name" property="ttiFromPersonName" jdbcType="VARCHAR" />
+    <result column="tti_from_person_phone" property="ttiFromPersonPhone" jdbcType="VARCHAR" />
+    <result column="tti_to_prov_id" property="ttiToProvId" jdbcType="BIGINT" />
+    <result column="tti_to_city_id" property="ttiToCityId" jdbcType="BIGINT" />
+    <result column="tti_to_region_id" property="ttiToRegionId" jdbcType="BIGINT" />
+    <result column="tti_to_address" property="ttiToAddress" jdbcType="VARCHAR" />
+    <result column="tti_to_lable" property="ttiToLable" jdbcType="VARCHAR" />
+    <result column="tti_to_longitude" property="ttiToLongitude" jdbcType="VARCHAR" />
+    <result column="tti_to_latitude" property="ttiToLatitude" jdbcType="VARCHAR" />
+    <result column="tti_to_person_name" property="ttiToPersonName" jdbcType="VARCHAR" />
+    <result column="tti_to_person_phone" property="ttiToPersonPhone" jdbcType="VARCHAR" />
+    <result column="tti_to_company_name" property="ttiToCompanyName" jdbcType="VARCHAR" />
+    <result column="tti_from_to_distance" property="ttiFromToDistance" jdbcType="DOUBLE" />
+    <result column="tti_goods_type" property="ttiGoodsType" jdbcType="BIGINT" />
+    <result column="tti_goods_name" property="ttiGoodsName" jdbcType="VARCHAR" />
+    <result column="tti_goods_weight" property="ttiGoodsWeight" jdbcType="DOUBLE" />
+    <result column="tti_goods_unit_price" property="ttiGoodsUnitPrice" jdbcType="DOUBLE" />
+    <result column="tti_transport_order_num" property="ttiTransportOrderNum" jdbcType="INTEGER" />
+    <result column="tti_completed_weight" property="ttiCompletedWeight" jdbcType="DOUBLE" />
+    <result column="tti_loading_date" property="ttiLoadingDate" jdbcType="TIMESTAMP" />
+    <result column="tti_car_type" property="ttiCarType" jdbcType="BIGINT" />
+    <result column="tti_car_length" property="ttiCarLength" jdbcType="VARCHAR" />
+    <result column="tti_pay_type" property="ttiPayType" jdbcType="BIGINT" />
+    <result column="tti_settlement_standards" property="ttiSettlementStandards" jdbcType="INTEGER" />
+    <result column="tti_discount_standards" property="ttiDiscountStandards" jdbcType="INTEGER" />
+    <result column="tti_loss_standards" property="ttiLossStandards" jdbcType="INTEGER" />
+    <result column="tti_shipping_price" property="ttiShippingPrice" jdbcType="DOUBLE" />
+    <result column="tti_disburden_price" property="ttiDisburdenPrice" jdbcType="DOUBLE" />
+    <result column="tti_services_price" property="ttiServicesPrice" jdbcType="DOUBLE" />
+    <result column="tti_revc_scaaning" property="ttiRevcScaaning" jdbcType="INTEGER" />
+    <result column="tti_revc_check" property="ttiRevcCheck" jdbcType="INTEGER" />
+    <result column="tti_revc_single" property="ttiRevcSingle" jdbcType="INTEGER" />
+    <result column="tti_desc" property="ttiDesc" jdbcType="VARCHAR" />
+    <result column="tti_QR_code" property="ttiQrCode" jdbcType="VARCHAR" />
+    <result column="tti_release_date" property="ttiReleaseDate" jdbcType="TIMESTAMP" />
+    <result column="tti_status" property="ttiStatus" jdbcType="INTEGER" />
+    <result column="tti_add_date" property="ttiAddDate" jdbcType="TIMESTAMP" />
+    <result column="tti_loss_weight" property="ttiLossWeight" jdbcType="DOUBLE" />
+    <result column="tti_loss_price" property="ttiLossPrice" jdbcType="DOUBLE" />
+    <result column="tti_close_time" property="ttiCloseTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tti_id, tti_number, tti_shipper_id, tti_from_prov_id, tti_from_city_id, tti_from_region_id, 
+    tti_from_addresss, tti_from_lable, tti_from_longitude, tti_from_latitude, tti_from_person_name, 
+    tti_from_person_phone, tti_to_prov_id, tti_to_city_id, tti_to_region_id, tti_to_address, 
+    tti_to_lable, tti_to_longitude, tti_to_latitude, tti_to_person_name, tti_to_person_phone, 
+    tti_to_company_name, tti_from_to_distance, tti_goods_type, tti_goods_name, tti_goods_weight, 
+    tti_goods_unit_price, tti_transport_order_num, tti_completed_weight, tti_loading_date, 
+    tti_car_type, tti_car_length, tti_pay_type, tti_settlement_standards, tti_discount_standards, 
+    tti_loss_standards, tti_shipping_price, tti_disburden_price, tti_services_price, 
+    tti_revc_scaaning, tti_revc_check, tti_revc_single, tti_desc, tti_QR_code, tti_release_date, 
+    tti_status, tti_add_date, tti_loss_weight, tti_loss_price, tti_close_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_task_info
+    where tti_id = #{ttiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_task_info
+    where tti_id = #{ttiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbTaskInfo" >
+    insert into tb_task_info (tti_id, tti_number, tti_shipper_id, 
+      tti_from_prov_id, tti_from_city_id, tti_from_region_id, 
+      tti_from_addresss, tti_from_lable, tti_from_longitude, 
+      tti_from_latitude, tti_from_person_name, tti_from_person_phone, 
+      tti_to_prov_id, tti_to_city_id, tti_to_region_id, 
+      tti_to_address, tti_to_lable, tti_to_longitude, 
+      tti_to_latitude, tti_to_person_name, tti_to_person_phone, 
+      tti_to_company_name, tti_from_to_distance, tti_goods_type, 
+      tti_goods_name, tti_goods_weight, tti_goods_unit_price, 
+      tti_transport_order_num, tti_completed_weight, 
+      tti_loading_date, tti_car_type, tti_car_length, 
+      tti_pay_type, tti_settlement_standards, tti_discount_standards, 
+      tti_loss_standards, tti_shipping_price, tti_disburden_price, 
+      tti_services_price, tti_revc_scaaning, tti_revc_check, 
+      tti_revc_single, tti_desc, tti_QR_code, 
+      tti_release_date, tti_status, tti_add_date, 
+      tti_loss_weight, tti_loss_price, tti_close_time
+      )
+    values (#{ttiId,jdbcType=BIGINT}, #{ttiNumber,jdbcType=VARCHAR}, #{ttiShipperId,jdbcType=BIGINT}, 
+      #{ttiFromProvId,jdbcType=BIGINT}, #{ttiFromCityId,jdbcType=BIGINT}, #{ttiFromRegionId,jdbcType=BIGINT}, 
+      #{ttiFromAddresss,jdbcType=VARCHAR}, #{ttiFromLable,jdbcType=VARCHAR}, #{ttiFromLongitude,jdbcType=VARCHAR}, 
+      #{ttiFromLatitude,jdbcType=VARCHAR}, #{ttiFromPersonName,jdbcType=VARCHAR}, #{ttiFromPersonPhone,jdbcType=VARCHAR}, 
+      #{ttiToProvId,jdbcType=BIGINT}, #{ttiToCityId,jdbcType=BIGINT}, #{ttiToRegionId,jdbcType=BIGINT}, 
+      #{ttiToAddress,jdbcType=VARCHAR}, #{ttiToLable,jdbcType=VARCHAR}, #{ttiToLongitude,jdbcType=VARCHAR}, 
+      #{ttiToLatitude,jdbcType=VARCHAR}, #{ttiToPersonName,jdbcType=VARCHAR}, #{ttiToPersonPhone,jdbcType=VARCHAR}, 
+      #{ttiToCompanyName,jdbcType=VARCHAR}, #{ttiFromToDistance,jdbcType=DOUBLE}, #{ttiGoodsType,jdbcType=BIGINT}, 
+      #{ttiGoodsName,jdbcType=VARCHAR}, #{ttiGoodsWeight,jdbcType=DOUBLE}, #{ttiGoodsUnitPrice,jdbcType=DOUBLE}, 
+      #{ttiTransportOrderNum,jdbcType=INTEGER}, #{ttiCompletedWeight,jdbcType=DOUBLE}, 
+      #{ttiLoadingDate,jdbcType=TIMESTAMP}, #{ttiCarType,jdbcType=BIGINT}, #{ttiCarLength,jdbcType=VARCHAR}, 
+      #{ttiPayType,jdbcType=BIGINT}, #{ttiSettlementStandards,jdbcType=INTEGER}, #{ttiDiscountStandards,jdbcType=INTEGER}, 
+      #{ttiLossStandards,jdbcType=INTEGER}, #{ttiShippingPrice,jdbcType=DOUBLE}, #{ttiDisburdenPrice,jdbcType=DOUBLE}, 
+      #{ttiServicesPrice,jdbcType=DOUBLE}, #{ttiRevcScaaning,jdbcType=INTEGER}, #{ttiRevcCheck,jdbcType=INTEGER}, 
+      #{ttiRevcSingle,jdbcType=INTEGER}, #{ttiDesc,jdbcType=VARCHAR}, #{ttiQrCode,jdbcType=VARCHAR}, 
+      #{ttiReleaseDate,jdbcType=TIMESTAMP}, #{ttiStatus,jdbcType=INTEGER}, #{ttiAddDate,jdbcType=TIMESTAMP}, 
+      #{ttiLossWeight,jdbcType=DOUBLE}, #{ttiLossPrice,jdbcType=DOUBLE}, #{ttiCloseTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbTaskInfo" >
+    insert into tb_task_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ttiId != null" >
+        tti_id,
+      </if>
+      <if test="ttiNumber != null" >
+        tti_number,
+      </if>
+      <if test="ttiShipperId != null" >
+        tti_shipper_id,
+      </if>
+      <if test="ttiFromProvId != null" >
+        tti_from_prov_id,
+      </if>
+      <if test="ttiFromCityId != null" >
+        tti_from_city_id,
+      </if>
+      <if test="ttiFromRegionId != null" >
+        tti_from_region_id,
+      </if>
+      <if test="ttiFromAddresss != null" >
+        tti_from_addresss,
+      </if>
+      <if test="ttiFromLable != null" >
+        tti_from_lable,
+      </if>
+      <if test="ttiFromLongitude != null" >
+        tti_from_longitude,
+      </if>
+      <if test="ttiFromLatitude != null" >
+        tti_from_latitude,
+      </if>
+      <if test="ttiFromPersonName != null" >
+        tti_from_person_name,
+      </if>
+      <if test="ttiFromPersonPhone != null" >
+        tti_from_person_phone,
+      </if>
+      <if test="ttiToProvId != null" >
+        tti_to_prov_id,
+      </if>
+      <if test="ttiToCityId != null" >
+        tti_to_city_id,
+      </if>
+      <if test="ttiToRegionId != null" >
+        tti_to_region_id,
+      </if>
+      <if test="ttiToAddress != null" >
+        tti_to_address,
+      </if>
+      <if test="ttiToLable != null" >
+        tti_to_lable,
+      </if>
+      <if test="ttiToLongitude != null" >
+        tti_to_longitude,
+      </if>
+      <if test="ttiToLatitude != null" >
+        tti_to_latitude,
+      </if>
+      <if test="ttiToPersonName != null" >
+        tti_to_person_name,
+      </if>
+      <if test="ttiToPersonPhone != null" >
+        tti_to_person_phone,
+      </if>
+      <if test="ttiToCompanyName != null" >
+        tti_to_company_name,
+      </if>
+      <if test="ttiFromToDistance != null" >
+        tti_from_to_distance,
+      </if>
+      <if test="ttiGoodsType != null" >
+        tti_goods_type,
+      </if>
+      <if test="ttiGoodsName != null" >
+        tti_goods_name,
+      </if>
+      <if test="ttiGoodsWeight != null" >
+        tti_goods_weight,
+      </if>
+      <if test="ttiGoodsUnitPrice != null" >
+        tti_goods_unit_price,
+      </if>
+      <if test="ttiTransportOrderNum != null" >
+        tti_transport_order_num,
+      </if>
+      <if test="ttiCompletedWeight != null" >
+        tti_completed_weight,
+      </if>
+      <if test="ttiLoadingDate != null" >
+        tti_loading_date,
+      </if>
+      <if test="ttiCarType != null" >
+        tti_car_type,
+      </if>
+      <if test="ttiCarLength != null" >
+        tti_car_length,
+      </if>
+      <if test="ttiPayType != null" >
+        tti_pay_type,
+      </if>
+      <if test="ttiSettlementStandards != null" >
+        tti_settlement_standards,
+      </if>
+      <if test="ttiDiscountStandards != null" >
+        tti_discount_standards,
+      </if>
+      <if test="ttiLossStandards != null" >
+        tti_loss_standards,
+      </if>
+      <if test="ttiShippingPrice != null" >
+        tti_shipping_price,
+      </if>
+      <if test="ttiDisburdenPrice != null" >
+        tti_disburden_price,
+      </if>
+      <if test="ttiServicesPrice != null" >
+        tti_services_price,
+      </if>
+      <if test="ttiRevcScaaning != null" >
+        tti_revc_scaaning,
+      </if>
+      <if test="ttiRevcCheck != null" >
+        tti_revc_check,
+      </if>
+      <if test="ttiRevcSingle != null" >
+        tti_revc_single,
+      </if>
+      <if test="ttiDesc != null" >
+        tti_desc,
+      </if>
+      <if test="ttiQrCode != null" >
+        tti_QR_code,
+      </if>
+      <if test="ttiReleaseDate != null" >
+        tti_release_date,
+      </if>
+      <if test="ttiStatus != null" >
+        tti_status,
+      </if>
+      <if test="ttiAddDate != null" >
+        tti_add_date,
+      </if>
+      <if test="ttiLossWeight != null" >
+        tti_loss_weight,
+      </if>
+      <if test="ttiLossPrice != null" >
+        tti_loss_price,
+      </if>
+      <if test="ttiCloseTime != null" >
+        tti_close_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ttiId != null" >
+        #{ttiId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiNumber != null" >
+        #{ttiNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiShipperId != null" >
+        #{ttiShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromProvId != null" >
+        #{ttiFromProvId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromCityId != null" >
+        #{ttiFromCityId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromRegionId != null" >
+        #{ttiFromRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromAddresss != null" >
+        #{ttiFromAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromLable != null" >
+        #{ttiFromLable,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromLongitude != null" >
+        #{ttiFromLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromLatitude != null" >
+        #{ttiFromLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromPersonName != null" >
+        #{ttiFromPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromPersonPhone != null" >
+        #{ttiFromPersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToProvId != null" >
+        #{ttiToProvId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiToCityId != null" >
+        #{ttiToCityId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiToRegionId != null" >
+        #{ttiToRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiToAddress != null" >
+        #{ttiToAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToLable != null" >
+        #{ttiToLable,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToLongitude != null" >
+        #{ttiToLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToLatitude != null" >
+        #{ttiToLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToPersonName != null" >
+        #{ttiToPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToPersonPhone != null" >
+        #{ttiToPersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToCompanyName != null" >
+        #{ttiToCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromToDistance != null" >
+        #{ttiFromToDistance,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiGoodsType != null" >
+        #{ttiGoodsType,jdbcType=BIGINT},
+      </if>
+      <if test="ttiGoodsName != null" >
+        #{ttiGoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiGoodsWeight != null" >
+        #{ttiGoodsWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiGoodsUnitPrice != null" >
+        #{ttiGoodsUnitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiTransportOrderNum != null" >
+        #{ttiTransportOrderNum,jdbcType=INTEGER},
+      </if>
+      <if test="ttiCompletedWeight != null" >
+        #{ttiCompletedWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiLoadingDate != null" >
+        #{ttiLoadingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttiCarType != null" >
+        #{ttiCarType,jdbcType=BIGINT},
+      </if>
+      <if test="ttiCarLength != null" >
+        #{ttiCarLength,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiPayType != null" >
+        #{ttiPayType,jdbcType=BIGINT},
+      </if>
+      <if test="ttiSettlementStandards != null" >
+        #{ttiSettlementStandards,jdbcType=INTEGER},
+      </if>
+      <if test="ttiDiscountStandards != null" >
+        #{ttiDiscountStandards,jdbcType=INTEGER},
+      </if>
+      <if test="ttiLossStandards != null" >
+        #{ttiLossStandards,jdbcType=INTEGER},
+      </if>
+      <if test="ttiShippingPrice != null" >
+        #{ttiShippingPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiDisburdenPrice != null" >
+        #{ttiDisburdenPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiServicesPrice != null" >
+        #{ttiServicesPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiRevcScaaning != null" >
+        #{ttiRevcScaaning,jdbcType=INTEGER},
+      </if>
+      <if test="ttiRevcCheck != null" >
+        #{ttiRevcCheck,jdbcType=INTEGER},
+      </if>
+      <if test="ttiRevcSingle != null" >
+        #{ttiRevcSingle,jdbcType=INTEGER},
+      </if>
+      <if test="ttiDesc != null" >
+        #{ttiDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiQrCode != null" >
+        #{ttiQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiReleaseDate != null" >
+        #{ttiReleaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttiStatus != null" >
+        #{ttiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttiAddDate != null" >
+        #{ttiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttiLossWeight != null" >
+        #{ttiLossWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiLossPrice != null" >
+        #{ttiLossPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiCloseTime != null" >
+        #{ttiCloseTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbTaskInfo" >
+    update tb_task_info
+    <set >
+      <if test="ttiNumber != null" >
+        tti_number = #{ttiNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiShipperId != null" >
+        tti_shipper_id = #{ttiShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromProvId != null" >
+        tti_from_prov_id = #{ttiFromProvId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromCityId != null" >
+        tti_from_city_id = #{ttiFromCityId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromRegionId != null" >
+        tti_from_region_id = #{ttiFromRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiFromAddresss != null" >
+        tti_from_addresss = #{ttiFromAddresss,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromLable != null" >
+        tti_from_lable = #{ttiFromLable,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromLongitude != null" >
+        tti_from_longitude = #{ttiFromLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromLatitude != null" >
+        tti_from_latitude = #{ttiFromLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromPersonName != null" >
+        tti_from_person_name = #{ttiFromPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromPersonPhone != null" >
+        tti_from_person_phone = #{ttiFromPersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToProvId != null" >
+        tti_to_prov_id = #{ttiToProvId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiToCityId != null" >
+        tti_to_city_id = #{ttiToCityId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiToRegionId != null" >
+        tti_to_region_id = #{ttiToRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="ttiToAddress != null" >
+        tti_to_address = #{ttiToAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToLable != null" >
+        tti_to_lable = #{ttiToLable,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToLongitude != null" >
+        tti_to_longitude = #{ttiToLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToLatitude != null" >
+        tti_to_latitude = #{ttiToLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToPersonName != null" >
+        tti_to_person_name = #{ttiToPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToPersonPhone != null" >
+        tti_to_person_phone = #{ttiToPersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiToCompanyName != null" >
+        tti_to_company_name = #{ttiToCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiFromToDistance != null" >
+        tti_from_to_distance = #{ttiFromToDistance,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiGoodsType != null" >
+        tti_goods_type = #{ttiGoodsType,jdbcType=BIGINT},
+      </if>
+      <if test="ttiGoodsName != null" >
+        tti_goods_name = #{ttiGoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiGoodsWeight != null" >
+        tti_goods_weight = #{ttiGoodsWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiGoodsUnitPrice != null" >
+        tti_goods_unit_price = #{ttiGoodsUnitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiTransportOrderNum != null" >
+        tti_transport_order_num = #{ttiTransportOrderNum,jdbcType=INTEGER},
+      </if>
+      <if test="ttiCompletedWeight != null" >
+        tti_completed_weight = #{ttiCompletedWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiLoadingDate != null" >
+        tti_loading_date = #{ttiLoadingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttiCarType != null" >
+        tti_car_type = #{ttiCarType,jdbcType=BIGINT},
+      </if>
+      <if test="ttiCarLength != null" >
+        tti_car_length = #{ttiCarLength,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiPayType != null" >
+        tti_pay_type = #{ttiPayType,jdbcType=BIGINT},
+      </if>
+      <if test="ttiSettlementStandards != null" >
+        tti_settlement_standards = #{ttiSettlementStandards,jdbcType=INTEGER},
+      </if>
+      <if test="ttiDiscountStandards != null" >
+        tti_discount_standards = #{ttiDiscountStandards,jdbcType=INTEGER},
+      </if>
+      <if test="ttiLossStandards != null" >
+        tti_loss_standards = #{ttiLossStandards,jdbcType=INTEGER},
+      </if>
+      <if test="ttiShippingPrice != null" >
+        tti_shipping_price = #{ttiShippingPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiDisburdenPrice != null" >
+        tti_disburden_price = #{ttiDisburdenPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiServicesPrice != null" >
+        tti_services_price = #{ttiServicesPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiRevcScaaning != null" >
+        tti_revc_scaaning = #{ttiRevcScaaning,jdbcType=INTEGER},
+      </if>
+      <if test="ttiRevcCheck != null" >
+        tti_revc_check = #{ttiRevcCheck,jdbcType=INTEGER},
+      </if>
+      <if test="ttiRevcSingle != null" >
+        tti_revc_single = #{ttiRevcSingle,jdbcType=INTEGER},
+      </if>
+      <if test="ttiDesc != null" >
+        tti_desc = #{ttiDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiQrCode != null" >
+        tti_QR_code = #{ttiQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ttiReleaseDate != null" >
+        tti_release_date = #{ttiReleaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttiStatus != null" >
+        tti_status = #{ttiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ttiAddDate != null" >
+        tti_add_date = #{ttiAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ttiLossWeight != null" >
+        tti_loss_weight = #{ttiLossWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiLossPrice != null" >
+        tti_loss_price = #{ttiLossPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="ttiCloseTime != null" >
+        tti_close_time = #{ttiCloseTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tti_id = #{ttiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbTaskInfo" >
+    update tb_task_info
+    set tti_number = #{ttiNumber,jdbcType=VARCHAR},
+      tti_shipper_id = #{ttiShipperId,jdbcType=BIGINT},
+      tti_from_prov_id = #{ttiFromProvId,jdbcType=BIGINT},
+      tti_from_city_id = #{ttiFromCityId,jdbcType=BIGINT},
+      tti_from_region_id = #{ttiFromRegionId,jdbcType=BIGINT},
+      tti_from_addresss = #{ttiFromAddresss,jdbcType=VARCHAR},
+      tti_from_lable = #{ttiFromLable,jdbcType=VARCHAR},
+      tti_from_longitude = #{ttiFromLongitude,jdbcType=VARCHAR},
+      tti_from_latitude = #{ttiFromLatitude,jdbcType=VARCHAR},
+      tti_from_person_name = #{ttiFromPersonName,jdbcType=VARCHAR},
+      tti_from_person_phone = #{ttiFromPersonPhone,jdbcType=VARCHAR},
+      tti_to_prov_id = #{ttiToProvId,jdbcType=BIGINT},
+      tti_to_city_id = #{ttiToCityId,jdbcType=BIGINT},
+      tti_to_region_id = #{ttiToRegionId,jdbcType=BIGINT},
+      tti_to_address = #{ttiToAddress,jdbcType=VARCHAR},
+      tti_to_lable = #{ttiToLable,jdbcType=VARCHAR},
+      tti_to_longitude = #{ttiToLongitude,jdbcType=VARCHAR},
+      tti_to_latitude = #{ttiToLatitude,jdbcType=VARCHAR},
+      tti_to_person_name = #{ttiToPersonName,jdbcType=VARCHAR},
+      tti_to_person_phone = #{ttiToPersonPhone,jdbcType=VARCHAR},
+      tti_to_company_name = #{ttiToCompanyName,jdbcType=VARCHAR},
+      tti_from_to_distance = #{ttiFromToDistance,jdbcType=DOUBLE},
+      tti_goods_type = #{ttiGoodsType,jdbcType=BIGINT},
+      tti_goods_name = #{ttiGoodsName,jdbcType=VARCHAR},
+      tti_goods_weight = #{ttiGoodsWeight,jdbcType=DOUBLE},
+      tti_goods_unit_price = #{ttiGoodsUnitPrice,jdbcType=DOUBLE},
+      tti_transport_order_num = #{ttiTransportOrderNum,jdbcType=INTEGER},
+      tti_completed_weight = #{ttiCompletedWeight,jdbcType=DOUBLE},
+      tti_loading_date = #{ttiLoadingDate,jdbcType=TIMESTAMP},
+      tti_car_type = #{ttiCarType,jdbcType=BIGINT},
+      tti_car_length = #{ttiCarLength,jdbcType=VARCHAR},
+      tti_pay_type = #{ttiPayType,jdbcType=BIGINT},
+      tti_settlement_standards = #{ttiSettlementStandards,jdbcType=INTEGER},
+      tti_discount_standards = #{ttiDiscountStandards,jdbcType=INTEGER},
+      tti_loss_standards = #{ttiLossStandards,jdbcType=INTEGER},
+      tti_shipping_price = #{ttiShippingPrice,jdbcType=DOUBLE},
+      tti_disburden_price = #{ttiDisburdenPrice,jdbcType=DOUBLE},
+      tti_services_price = #{ttiServicesPrice,jdbcType=DOUBLE},
+      tti_revc_scaaning = #{ttiRevcScaaning,jdbcType=INTEGER},
+      tti_revc_check = #{ttiRevcCheck,jdbcType=INTEGER},
+      tti_revc_single = #{ttiRevcSingle,jdbcType=INTEGER},
+      tti_desc = #{ttiDesc,jdbcType=VARCHAR},
+      tti_QR_code = #{ttiQrCode,jdbcType=VARCHAR},
+      tti_release_date = #{ttiReleaseDate,jdbcType=TIMESTAMP},
+      tti_status = #{ttiStatus,jdbcType=INTEGER},
+      tti_add_date = #{ttiAddDate,jdbcType=TIMESTAMP},
+      tti_loss_weight = #{ttiLossWeight,jdbcType=DOUBLE},
+      tti_loss_price = #{ttiLossPrice,jdbcType=DOUBLE},
+      tti_close_time = #{ttiCloseTime,jdbcType=TIMESTAMP}
+    where tti_id = #{ttiId,jdbcType=BIGINT}
+  </update>
+</mapper>

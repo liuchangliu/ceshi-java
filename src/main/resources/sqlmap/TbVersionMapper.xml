@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbVersionMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbVersion" >
+    <id column="tv_id" property="tvId" jdbcType="BIGINT" />
+    <result column="tv_version" property="tvVersion" jdbcType="VARCHAR" />
+    <result column="tv_name" property="tvName" jdbcType="VARCHAR" />
+    <result column="tv_desp" property="tvDesp" jdbcType="VARCHAR" />
+    <result column="tv_url" property="tvUrl" jdbcType="VARCHAR" />
+    <result column="tv_type" property="tvType" jdbcType="INTEGER" />
+    <result column="tv_status" property="tvStatus" jdbcType="INTEGER" />
+    <result column="tv_add_date" property="tvAddDate" jdbcType="TIMESTAMP" />
+    <result column="tv_if_update" property="tvIfUpdate" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tv_id, tv_version, tv_name, tv_desp, tv_url, tv_type, tv_status, tv_add_date, tv_if_update
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_version
+    where tv_id = #{tvId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_version
+    where tv_id = #{tvId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbVersion" >
+    insert into tb_version (tv_id, tv_version, tv_name, 
+      tv_desp, tv_url, tv_type, 
+      tv_status, tv_add_date, tv_if_update
+      )
+    values (#{tvId,jdbcType=BIGINT}, #{tvVersion,jdbcType=VARCHAR}, #{tvName,jdbcType=VARCHAR}, 
+      #{tvDesp,jdbcType=VARCHAR}, #{tvUrl,jdbcType=VARCHAR}, #{tvType,jdbcType=INTEGER}, 
+      #{tvStatus,jdbcType=INTEGER}, #{tvAddDate,jdbcType=TIMESTAMP}, #{tvIfUpdate,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbVersion" >
+    insert into tb_version
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tvId != null" >
+        tv_id,
+      </if>
+      <if test="tvVersion != null" >
+        tv_version,
+      </if>
+      <if test="tvName != null" >
+        tv_name,
+      </if>
+      <if test="tvDesp != null" >
+        tv_desp,
+      </if>
+      <if test="tvUrl != null" >
+        tv_url,
+      </if>
+      <if test="tvType != null" >
+        tv_type,
+      </if>
+      <if test="tvStatus != null" >
+        tv_status,
+      </if>
+      <if test="tvAddDate != null" >
+        tv_add_date,
+      </if>
+      <if test="tvIfUpdate != null" >
+        tv_if_update,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tvId != null" >
+        #{tvId,jdbcType=BIGINT},
+      </if>
+      <if test="tvVersion != null" >
+        #{tvVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="tvName != null" >
+        #{tvName,jdbcType=VARCHAR},
+      </if>
+      <if test="tvDesp != null" >
+        #{tvDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tvUrl != null" >
+        #{tvUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tvType != null" >
+        #{tvType,jdbcType=INTEGER},
+      </if>
+      <if test="tvStatus != null" >
+        #{tvStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tvAddDate != null" >
+        #{tvAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tvIfUpdate != null" >
+        #{tvIfUpdate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbVersion" >
+    update tb_version
+    <set >
+      <if test="tvVersion != null" >
+        tv_version = #{tvVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="tvName != null" >
+        tv_name = #{tvName,jdbcType=VARCHAR},
+      </if>
+      <if test="tvDesp != null" >
+        tv_desp = #{tvDesp,jdbcType=VARCHAR},
+      </if>
+      <if test="tvUrl != null" >
+        tv_url = #{tvUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tvType != null" >
+        tv_type = #{tvType,jdbcType=INTEGER},
+      </if>
+      <if test="tvStatus != null" >
+        tv_status = #{tvStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tvAddDate != null" >
+        tv_add_date = #{tvAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tvIfUpdate != null" >
+        tv_if_update = #{tvIfUpdate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tv_id = #{tvId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbVersion" >
+    update tb_version
+    set tv_version = #{tvVersion,jdbcType=VARCHAR},
+      tv_name = #{tvName,jdbcType=VARCHAR},
+      tv_desp = #{tvDesp,jdbcType=VARCHAR},
+      tv_url = #{tvUrl,jdbcType=VARCHAR},
+      tv_type = #{tvType,jdbcType=INTEGER},
+      tv_status = #{tvStatus,jdbcType=INTEGER},
+      tv_add_date = #{tvAddDate,jdbcType=TIMESTAMP},
+      tv_if_update = #{tvIfUpdate,jdbcType=INTEGER}
+    where tv_id = #{tvId,jdbcType=BIGINT}
+  </update>
+</mapper>

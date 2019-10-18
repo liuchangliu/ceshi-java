@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbInformationCataMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbInformationCata" >
+    <id column="tic_id" property="ticId" jdbcType="BIGINT" />
+    <result column="tic_name" property="ticName" jdbcType="VARCHAR" />
+    <result column="tic_parent_id" property="ticParentId" jdbcType="BIGINT" />
+    <result column="tic_order" property="ticOrder" jdbcType="INTEGER" />
+    <result column="tic_add_date" property="ticAddDate" jdbcType="TIMESTAMP" />
+    <result column="tic_status" property="ticStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tic_id, tic_name, tic_parent_id, tic_order, tic_add_date, tic_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_information_cata
+    where tic_id = #{ticId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_information_cata
+    where tic_id = #{ticId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbInformationCata" >
+    insert into tb_information_cata (tic_id, tic_name, tic_parent_id, 
+      tic_order, tic_add_date, tic_status
+      )
+    values (#{ticId,jdbcType=BIGINT}, #{ticName,jdbcType=VARCHAR}, #{ticParentId,jdbcType=BIGINT}, 
+      #{ticOrder,jdbcType=INTEGER}, #{ticAddDate,jdbcType=TIMESTAMP}, #{ticStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbInformationCata" >
+    insert into tb_information_cata
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ticId != null" >
+        tic_id,
+      </if>
+      <if test="ticName != null" >
+        tic_name,
+      </if>
+      <if test="ticParentId != null" >
+        tic_parent_id,
+      </if>
+      <if test="ticOrder != null" >
+        tic_order,
+      </if>
+      <if test="ticAddDate != null" >
+        tic_add_date,
+      </if>
+      <if test="ticStatus != null" >
+        tic_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ticId != null" >
+        #{ticId,jdbcType=BIGINT},
+      </if>
+      <if test="ticName != null" >
+        #{ticName,jdbcType=VARCHAR},
+      </if>
+      <if test="ticParentId != null" >
+        #{ticParentId,jdbcType=BIGINT},
+      </if>
+      <if test="ticOrder != null" >
+        #{ticOrder,jdbcType=INTEGER},
+      </if>
+      <if test="ticAddDate != null" >
+        #{ticAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ticStatus != null" >
+        #{ticStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbInformationCata" >
+    update tb_information_cata
+    <set >
+      <if test="ticName != null" >
+        tic_name = #{ticName,jdbcType=VARCHAR},
+      </if>
+      <if test="ticParentId != null" >
+        tic_parent_id = #{ticParentId,jdbcType=BIGINT},
+      </if>
+      <if test="ticOrder != null" >
+        tic_order = #{ticOrder,jdbcType=INTEGER},
+      </if>
+      <if test="ticAddDate != null" >
+        tic_add_date = #{ticAddDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ticStatus != null" >
+        tic_status = #{ticStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tic_id = #{ticId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbInformationCata" >
+    update tb_information_cata
+    set tic_name = #{ticName,jdbcType=VARCHAR},
+      tic_parent_id = #{ticParentId,jdbcType=BIGINT},
+      tic_order = #{ticOrder,jdbcType=INTEGER},
+      tic_add_date = #{ticAddDate,jdbcType=TIMESTAMP},
+      tic_status = #{ticStatus,jdbcType=INTEGER}
+    where tic_id = #{ticId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.dao.TbStaffInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springboot.entity.TbStaffInfo" >
+    <id column="tsi_id" property="tsiId" jdbcType="BIGINT" />
+    <result column="tsi_shipper_id" property="tsiShipperId" jdbcType="BIGINT" />
+    <result column="tsi_name" property="tsiName" jdbcType="VARCHAR" />
+    <result column="tsi_phone" property="tsiPhone" jdbcType="VARCHAR" />
+    <result column="tsi_card_number" property="tsiCardNumber" jdbcType="VARCHAR" />
+    <result column="tsi_position" property="tsiPosition" jdbcType="BIGINT" />
+    <result column="tsi_loginUser" property="tsiLoginuser" jdbcType="VARCHAR" />
+    <result column="tsi_password" property="tsiPassword" jdbcType="VARCHAR" />
+    <result column="tsi_remark" property="tsiRemark" jdbcType="VARCHAR" />
+    <result column="tsi_status" property="tsiStatus" jdbcType="INTEGER" />
+    <result column="tsi_add_date" property="tsiAddDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsi_id, tsi_shipper_id, tsi_name, tsi_phone, tsi_card_number, tsi_position, tsi_loginUser, 
+    tsi_password, tsi_remark, tsi_status, tsi_add_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_staff_info
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_staff_info
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.entity.TbStaffInfo" >
+    insert into tb_staff_info (tsi_id, tsi_shipper_id, tsi_name, 
+      tsi_phone, tsi_card_number, tsi_position, 
+      tsi_loginUser, tsi_password, tsi_remark, 
+      tsi_status, tsi_add_date)
+    values (#{tsiId,jdbcType=BIGINT}, #{tsiShipperId,jdbcType=BIGINT}, #{tsiName,jdbcType=VARCHAR}, 
+      #{tsiPhone,jdbcType=VARCHAR}, #{tsiCardNumber,jdbcType=VARCHAR}, #{tsiPosition,jdbcType=BIGINT}, 
+      #{tsiLoginuser,jdbcType=VARCHAR}, #{tsiPassword,jdbcType=VARCHAR}, #{tsiRemark,jdbcType=VARCHAR}, 
+      #{tsiStatus,jdbcType=INTEGER}, #{tsiAddDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.entity.TbStaffInfo" >
+    insert into tb_staff_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsiId != null" >
+        tsi_id,
+      </if>
+      <if test="tsiShipperId != null" >
+        tsi_shipper_id,
+      </if>
+      <if test="tsiName != null" >
+        tsi_name,
+      </if>
+      <if test="tsiPhone != null" >
+        tsi_phone,
+      </if>
+      <if test="tsiCardNumber != null" >
+        tsi_card_number,
+      </if>
+      <if test="tsiPosition != null" >
+        tsi_position,
+      </if>
+      <if test="tsiLoginuser != null" >
+        tsi_loginUser,
+      </if>
+      <if test="tsiPassword != null" >
+        tsi_password,
+      </if>
+      <if test="tsiRemark != null" >
+        tsi_remark,
+      </if>
+      <if test="tsiStatus != null" >
+        tsi_status,
+      </if>
+      <if test="tsiAddDate != null" >
+        tsi_add_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsiId != null" >
+        #{tsiId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiShipperId != null" >
+        #{tsiShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiName != null" >
+        #{tsiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPhone != null" >
+        #{tsiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiCardNumber != null" >
+        #{tsiCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPosition != null" >
+        #{tsiPosition,jdbcType=BIGINT},
+      </if>
+      <if test="tsiLoginuser != null" >
+        #{tsiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPassword != null" >
+        #{tsiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiRemark != null" >
+        #{tsiRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiStatus != null" >
+        #{tsiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsiAddDate != null" >
+        #{tsiAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.TbStaffInfo" >
+    update tb_staff_info
+    <set >
+      <if test="tsiShipperId != null" >
+        tsi_shipper_id = #{tsiShipperId,jdbcType=BIGINT},
+      </if>
+      <if test="tsiName != null" >
+        tsi_name = #{tsiName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPhone != null" >
+        tsi_phone = #{tsiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiCardNumber != null" >
+        tsi_card_number = #{tsiCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPosition != null" >
+        tsi_position = #{tsiPosition,jdbcType=BIGINT},
+      </if>
+      <if test="tsiLoginuser != null" >
+        tsi_loginUser = #{tsiLoginuser,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiPassword != null" >
+        tsi_password = #{tsiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiRemark != null" >
+        tsi_remark = #{tsiRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="tsiStatus != null" >
+        tsi_status = #{tsiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tsiAddDate != null" >
+        tsi_add_date = #{tsiAddDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.TbStaffInfo" >
+    update tb_staff_info
+    set tsi_shipper_id = #{tsiShipperId,jdbcType=BIGINT},
+      tsi_name = #{tsiName,jdbcType=VARCHAR},
+      tsi_phone = #{tsiPhone,jdbcType=VARCHAR},
+      tsi_card_number = #{tsiCardNumber,jdbcType=VARCHAR},
+      tsi_position = #{tsiPosition,jdbcType=BIGINT},
+      tsi_loginUser = #{tsiLoginuser,jdbcType=VARCHAR},
+      tsi_password = #{tsiPassword,jdbcType=VARCHAR},
+      tsi_remark = #{tsiRemark,jdbcType=VARCHAR},
+      tsi_status = #{tsiStatus,jdbcType=INTEGER},
+      tsi_add_date = #{tsiAddDate,jdbcType=TIMESTAMP}
+    where tsi_id = #{tsiId,jdbcType=BIGINT}
+  </update>
+</mapper>
